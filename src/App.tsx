@@ -1,6 +1,8 @@
 import './App.scss';
 import { Route, Routes } from 'react-router-dom';
 import Home from './components/Home/Home';
+import List from './pages/List/List';
+import Portfolio from './pages/Profile/Profile';
 
 
 function App() {
@@ -8,12 +10,10 @@ function App() {
     <div className="App">
       <Home/>
       <div className='container'>
-          {/* <Routes>
-            <Route path="/" element={} />
-            <Route path="/post/:id" element={} />
-            <Route path="/userid/:by" element={} />
-          </Routes>  */}
-          <div>Hello world</div>
+          <Routes>
+            <Route path="/" element={<List/>} />
+            <Route path="/:id" element={<Portfolio/>} />
+          </Routes>
           
         </div>
     </div>
