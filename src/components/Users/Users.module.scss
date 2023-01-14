@@ -1,18 +1,19 @@
 .users{
-    width: 152px;
+    width: 513px;
     height:1028px;
+    padding: 19px 59px 25px 34px;
     .name{
-        margin:19px 0 3px 34px;
-
+        margin-bottom:3px;
+        width: 300px;
         font-style: normal;
         font-weight: 700;
         font-size: 14px;
         line-height: 16px;
     }
     .search{
-        margin:10px 0 0 299px;
-
+        margin:10px 0 0 0;
         font-style: normal;
+        text-align: right;
         font-weight: 400;
         font-size: 12px;
         line-height: 14px;

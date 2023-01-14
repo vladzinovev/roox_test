@@ -1,13 +1,13 @@
 import Edit from '../../components/Edit/Edit';
 import Navigation from '../../components/Navigation/Navigation';
 
-import styles from './Portfolio.module.scss';
-const Portfolio=()=>{
+import styles from './Profile.module.scss';
+const Profile=()=>{
     return(
-        <div className={styles.portfolio}>
+        <div className={styles.profile}>
             <Navigation/>
             <Edit/>
         </div>
     )
 }
-export default Portfolio;
+export default Profile;
