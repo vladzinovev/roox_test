@@ -1,0 +1,63 @@
+.edit{
+    width: 152px;
+    height:1028px;
+    .flex_sb{
+        display: flex;
+        justify-content: space-between;
+        width: 422px;
+        margin: 19px 0 0 36px;
+        .name{
+            margin:19px 0 3px 34px;
+    
+            font-style: normal;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 16px;
+        }
+        .btn_edit{
+            padding:6 11px;
+            
+            background: #4B51EF;
+            border-radius: 5px;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 14px;
+
+            color: #FFFFFF;
+        }
+    }
+    
+    .form{
+        margin: 10px 0 0 36px;
+        padding: 20px 0 9px 12px;
+        position: relative;
+        .label_input{
+            font-style: normal;
+            font-weight: 400;
+            font-size: 8px;
+            line-height: 9px;
+            
+        }
+        .input{
+            width: 211px;
+            height: 22px;
+            padding:5px 10px;
+            margin:3px 0 10px 0 ;
+            
+            background: #FFFFFF;
+            border: 1px solid #D8D8D8;
+            border-radius: 5px;
+        }
+        .btn_submit{
+            position: absolute;
+            width: 85px;
+            height: 24.12px;
+            left: 1554px;
+            top: 611px;
+
+            background: #AFAFAF;
+            border-radius: 5px;
+        }
+    }
+}
