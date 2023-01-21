@@ -1,4 +1,3 @@
-import { Button } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import styles from "./Page404.module.scss";
 
@@ -10,11 +9,11 @@ const Page404 = () => (
     <p className={styles.description}>
       страница, на которую вы пытаетесь попасть, не существует или была удалена.
     </p>
-    <Button variant="outlined">
+    <button className={styles.btn}>
       <NavLink className={styles.link} to={"/"}>
         Вернуться на главную страницу
       </NavLink>
-    </Button>
+    </button>
   </section>
 );
 export default Page404;
