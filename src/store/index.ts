@@ -1,9 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import { useDispatch } from "react-redux";
+import users from "./users";
 
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    users
+  },
 });
 export default store;
 
