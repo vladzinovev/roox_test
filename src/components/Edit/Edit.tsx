@@ -1,10 +1,45 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useTypedSelector } from "../../hook/useTypedSelector";
+import { IPost } from "../../types/types";
 import styles from "./Edit.module.scss";
 const Edit = () => {
+  const { post } = useTypedSelector((store) => store.users);
+  let params = useParams();
+  const [postItem, setPostItem] = useState<IPost>();
+
+  function getUserId() {
+    setPostItem(post.find((post) => post.id === Number(params.id)));
+  }
+
+  /* async function fetchUser() {
+    await axios
+      .get(`https://jsonplaceholder.typicode.com/users/${params.id}`)
+      .then(async (response) => {
+        console.log(response.data);
+        await setPostItem(response.data);
+        console.log(postItem);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  } */
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
     const name = e.target.elements.name.value;
   };
+  useEffect(() => {
+    console.log(params);
+    getUserId();
+    /* fetchUser(); */
+    console.log(postItem);
+  }, [params.id]);
+  /* useEffect(() => {
+    
+    console.log(postItem);
+  }, [postItem]); */
 
   return (
     <div className={styles.edit}>
@@ -16,13 +51,14 @@ const Edit = () => {
       <form className={styles.form} onSubmit={handleSubmit}>
         <div>
           <label className={styles.label_input} htmlFor="name">
-            Name
+            User
           </label>
           <input
             className={styles.input}
             type="text"
             name="name"
             id="name"
+            value={postItem?.name} 
             required
           />
         </div>
@@ -35,6 +71,7 @@ const Edit = () => {
             type="text"
             name="user_name"
             id="user_name"
+            value={postItem?.username}
             required
           />
         </div>
@@ -47,6 +84,7 @@ const Edit = () => {
             type="email"
             name="email"
             id="email"
+            value={postItem?.email}
             required
           />
         </div>
@@ -59,6 +97,7 @@ const Edit = () => {
             type="text"
             name="street"
             id="street"
+            value={postItem?.address.street}
             required
           />
         </div>
@@ -71,6 +110,7 @@ const Edit = () => {
             type="text"
             name="city"
             id="city"
+            value={postItem?.address.city}
             required
           />
         </div>
@@ -83,6 +123,7 @@ const Edit = () => {
             type="text"
             name="zip_code"
             id="zip_code"
+            value={postItem?.address.zipcode}
             required
           />
         </div>
@@ -95,6 +136,7 @@ const Edit = () => {
             type="phone"
             name="phone"
             id="phone"
+            value={postItem?.phone}
             required
           />
         </div>
@@ -107,6 +149,7 @@ const Edit = () => {
             type="text"
             name="website"
             id="website"
+            value={postItem?.website}
             required
           />
         </div>

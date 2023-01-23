@@ -27,3 +27,7 @@ export interface IPost {
   website: string;
   company: Company;
 }
+
+export interface AllItems {
+    item: IPost;
+  }

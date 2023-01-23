@@ -11,7 +11,7 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<List />} />
-          <Route path="/:id" element={<Portfolio />} />
+          <Route path="/user/:id" element={<Portfolio />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
       </div>

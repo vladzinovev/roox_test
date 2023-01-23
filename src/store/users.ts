@@ -1,14 +1,12 @@
-import {
-  createAsyncThunk,
-  createSlice,
-} from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { IPost } from "../types/types";
 
 interface UsersState {
   sort: boolean;
   status: "empty" | "loading" | "error" | "success";
   error: {};
-  post: [];
+  post: IPost[];
 }
 
 export const getAllPosts = createAsyncThunk(
