@@ -7,24 +7,17 @@ import styles from "./Edit.module.scss";
 const Edit = () => {
   const { post } = useTypedSelector((store) => store.users);
   let params = useParams();
+  const [edit, setEdit] = useState(false);
   const [postItem, setPostItem] = useState<IPost>();
 
   function getUserId() {
     setPostItem(post.find((post) => post.id === Number(params.id)));
   }
 
-  /* async function fetchUser() {
-    await axios
-      .get(`https://jsonplaceholder.typicode.com/users/${params.id}`)
-      .then(async (response) => {
-        console.log(response.data);
-        await setPostItem(response.data);
-        console.log(postItem);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  } */
+  const onEdit = () => {
+    setEdit(true);
+  };
+
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
@@ -45,7 +38,13 @@ const Edit = () => {
     <div className={styles.edit}>
       <div className={styles.flex_sb}>
         <p className={styles.name}>Профиль пользователя</p>
-        <button className={styles.btn_edit}>Редактировать</button>
+        <button
+          onClick={onEdit}
+          disabled={edit ? true : false}
+          className={`${styles.btn_edit} ${!edit?styles.btn_enabled:styles.btn_disabled}`}
+        >
+          Редактировать
+        </button>
       </div>
 
       <form className={styles.form} onSubmit={handleSubmit}>
@@ -58,7 +57,8 @@ const Edit = () => {
             type="text"
             name="name"
             id="name"
-            value={postItem?.name} 
+            disabled={!edit ? true : false}
+            defaultValue={postItem?.name}
             required
           />
         </div>
@@ -71,7 +71,8 @@ const Edit = () => {
             type="text"
             name="user_name"
             id="user_name"
-            value={postItem?.username}
+            disabled={!edit ? true : false}
+            defaultValue={postItem?.username}
             required
           />
         </div>
@@ -84,7 +85,8 @@ const Edit = () => {
             type="email"
             name="email"
             id="email"
-            value={postItem?.email}
+            disabled={!edit ? true : false}
+            defaultValue={postItem?.email}
             required
           />
         </div>
@@ -97,7 +99,8 @@ const Edit = () => {
             type="text"
             name="street"
             id="street"
-            value={postItem?.address.street}
+            disabled={!edit ? true : false}
+            defaultValue={postItem?.address.street}
             required
           />
         </div>
@@ -110,7 +113,8 @@ const Edit = () => {
             type="text"
             name="city"
             id="city"
-            value={postItem?.address.city}
+            disabled={!edit ? true : false}
+            defaultValue={postItem?.address.city}
             required
           />
         </div>
@@ -123,7 +127,8 @@ const Edit = () => {
             type="text"
             name="zip_code"
             id="zip_code"
-            value={postItem?.address.zipcode}
+            disabled={!edit ? true : false}
+            defaultValue={postItem?.address.zipcode}
             required
           />
         </div>
@@ -136,7 +141,8 @@ const Edit = () => {
             type="phone"
             name="phone"
             id="phone"
-            value={postItem?.phone}
+            disabled={!edit ? true : false}
+            defaultValue={postItem?.phone}
             required
           />
         </div>
@@ -149,7 +155,8 @@ const Edit = () => {
             type="text"
             name="website"
             id="website"
-            value={postItem?.website}
+            disabled={!edit ? true : false}
+            defaultValue={postItem?.website}
             required
           />
         </div>
@@ -162,9 +169,17 @@ const Edit = () => {
             type="text"
             name="comment"
             id="comment"
+            disabled={!edit ? true : false}
           />
         </div>
-        <button className={styles.btn_submit} type="submit" value="Отправить">
+        <button
+          className={`${styles.btn_submit} ${
+            edit ? styles.btn_enabled : styles.btn_disabled
+          }`}
+          disabled={!edit ? true : false}
+          type="submit"
+          value="Отправить"
+        >
           Отправить
         </button>
       </form>

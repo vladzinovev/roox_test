@@ -1,87 +1,103 @@
-.edit{
-    width: 513px;
-    height:1028px;
-    padding: 13px 41px 25px 36px;
-    .flex_sb{
-        display: flex;
-        justify-content: space-between;
-        .name{
-            margin:5px 0 3px 0;
-    
-            font-style: normal;
-            font-weight: 700;
-            font-size: 14px;
-            line-height: 16px;
-        }
-        .btn_edit{
-            padding:6px 11px;
-            border-style: none;
-            background: #4B51EF;
-            border-radius: 5px;
-            font-style: normal;
-            font-weight: 00;
-            font-size: 12px;
-            line-height: 14px;
+@import "../../variables";
+.edit {
+  width: 513px;
+  height: 1028px;
+  padding: 13px 41px 25px 36px;
+  .flex_sb {
+    display: flex;
+    justify-content: space-between;
+    .name {
+      margin: 5px 0 3px 0;
 
-            color: #FFFFFF;
-        }
+      font-style: normal;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 16px;
+    }
+    .btn_edit {
+      padding: 6px 11px;
+      border-style: none;
+      border-radius: 5px;
+      font-style: normal;
+      font-weight: 00;
+      font-size: 12px;
+      line-height: 14px;
+      color: #ffffff;
     }
     
-    .form{
-        box-sizing: border-box;
-        margin-top: 10px;
-        background: #FFFFFF;
-        border: 1px solid #F3F3F3;
-        border-radius: 8px;
-        padding: 20px 0 9px 12px;
-        position: relative;
-        .label_input{
-            font-style: normal;
-            font-weight: 400;
-            font-size: 8px;
-            line-height: 9px;
-            display: block;
-            
-        }
-        .input{
-            box-sizing: border-box;
-            width: 211px;
-            height: 22px;
-            padding:5px 10px;
-            margin:3px 0 10px 0 ;
-            
-            background: #FFFFFF;
-            border: 1px solid #D8D8D8;
-            border-radius: 5px;
-        }
-        .input_comment{
-            box-sizing: border-box;
-            width: 412px;
-            height: 55px;
-            margin:3px 0 10px 0 ;
-
-            background: #FFFFFF;
-            border: 1px solid #D8D8D8;
-            border-radius: 5px;
-        }
-        .btn_submit{
-            position: absolute;
-            width: 85px;
-            height: 24.12px;
-            left: 350px;
-            top: 466px;
-            border-style: none;
-            background: #AFAFAF;
-            border-radius: 5px;
-
-            font-style: normal;
-            font-weight: 400;
-            font-size: 12px;
-            line-height: 14px;
-            /* identical to box height */
-
-
-            color: #FFFFFF;
-        }
+    .btn_enabled {
+      background: $main-base;
     }
+    .btn_disabled {
+      background: $main-disabled
+    }
+    .btn_enabled:hover {
+      cursor: pointer;
+      background: $main-hover
+    }
+  }
+
+  .form {
+    box-sizing: border-box;
+    margin-top: 10px;
+    background: #ffffff;
+    border: 1px solid #f3f3f3;
+    border-radius: 8px;
+    padding: 20px 0 9px 12px;
+    position: relative;
+    .label_input {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 8px;
+      line-height: 9px;
+      display: block;
+    }
+    .input {
+      box-sizing: border-box;
+      width: 211px;
+      height: 22px;
+      padding: 5px 10px;
+      margin: 3px 0 10px 0;
+
+      background: #ffffff;
+      border: 1px solid #d8d8d8;
+      border-radius: 5px;
+    }
+    .input_comment {
+      box-sizing: border-box;
+      width: 412px;
+      height: 55px;
+      margin: 3px 0 10px 0;
+
+      background: #ffffff;
+      border: 1px solid #d8d8d8;
+      border-radius: 5px;
+    }
+    .btn_submit {
+      position: absolute;
+      width: 85px;
+      height: 24.12px;
+      left: 350px;
+      top: 466px;
+      padding: 6px 11px;
+      border-style: none;
+      border-radius: 5px;
+      font-style: normal;
+      font-weight: 00;
+      font-size: 12px;
+      line-height: 14px;
+
+      color: #ffffff;
+    }
+    .btn_enabled {
+      background: $main-base;
+    }
+    .btn_disabled {
+      background: $main-disabled
+    }
+    .btn_enabled:hover {
+      cursor: pointer;
+      background: $main-hover
+    }
+  }
 }
