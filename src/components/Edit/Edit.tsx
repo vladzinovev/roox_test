@@ -1,37 +1,40 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useTypedSelector } from "../../hook/useTypedSelector";
 import { IPost } from "../../types/types";
 import styles from "./Edit.module.scss";
 const Edit = () => {
   const { post } = useTypedSelector((store) => store.users);
   let params = useParams();
+  let navigate = useNavigate();
   const [edit, setEdit] = useState(false);
   const [postItem, setPostItem] = useState<IPost>();
-  const [array, setArray] = useState<IPost[]>([{
-    id: 8,
-    name: "Nicholas Runolfsdottir V",
-    username: "Maxime_Nienow",
-    email: "Sherwood@rosamond.me",
-    address: {
-      street: "Ellsworth Summit",
-      suite: "Suite 729",
-      city: "Aliyaview",
-      zipcode: "45169",
-      geo: {
-        lat: "-14.3990",
-        lng: "-120.7677"
-      }
+  const [array, setArray] = useState<IPost[]>([
+    {
+      id: 8,
+      name: "Nicholas Runolfsdottir V",
+      username: "Maxime_Nienow",
+      email: "Sherwood@rosamond.me",
+      address: {
+        street: "Ellsworth Summit",
+        suite: "Suite 729",
+        city: "Aliyaview",
+        zipcode: "45169",
+        geo: {
+          lat: "-14.3990",
+          lng: "-120.7677",
+        },
+      },
+      phone: "586.493.6943 x140",
+      website: "jacynthe.com",
+      company: {
+        name: "Abernathy Group",
+        catchPhrase: "Implemented secondary concept",
+        bs: "e-enable extensible e-tailers",
+      },
     },
-    phone: "586.493.6943 x140",
-    website: "jacynthe.com",
-    company: {
-      name: "Abernathy Group",
-      catchPhrase: "Implemented secondary concept",
-      bs: "e-enable extensible e-tailers"
-    }
-  }]);
+  ]);
   function getUserId() {
     setPostItem(post.find((post) => post.id === Number(params.id)));
   }
@@ -49,35 +52,41 @@ const Edit = () => {
     setEdit(!edit);
   };
 
-  function handleSubmit (e:any){
+  function handleSubmit(e: any) {
     e.preventDefault();
     onEdit();
-     /* setPostItem(oldValues=>({...oldValues,[e.target.elements.name]:e.target.elements.name.value})); */
-    const target=e.target.elements;
-    const names:string = target.name.value;
-    const userName = target.user_name.value;
-    const email = target.email.value;
-    const street = target.street.value;
-    const city = target.city.value;
-    const zipcode = target.zip_code.value;
-    const phone = target.phone.value;
-    const website = target.website.value;
-    const comment = target.comment.value;
-    console.log(`${names} ${userName} ${email} ${street} ${city} ${zipcode} ${phone} ${website} ${comment} `)
+    /* setPostItem(oldValues=>({...oldValues,[e.target.elements.name]:e.target.elements.name.value})); */
+    const tet = e.target.elements;
+    const names: string = tet.name.value;
+    const userName = tet.user_name.value;
+    const email = tet.email.value;
+    const street = tet.street.value;
+    const city = tet.city.value;
+    const zipcode = tet.zip_code.value;
+    const phone = tet.phone.value;
+    const website = tet.website.value;
+    const comment = tet.comment.value;
+    console.log(
+      `${names} ${userName} ${email} ${street} ${city} ${zipcode} ${phone} ${website} ${comment} `
+    );
 
-    setArray(array.map(obj=>{
-        
-        if(obj.id===Number(params.id)){
-        console.log(params.id);
-        console.log(obj.id);
-        console.log(obj.name);
-        console.log([obj.name]);
-            return {...obj,['name']:names};
-        } else { 
-            return obj;
+    setArray(
+      array.map((obj) => {
+        if (obj.id === Number(params.id)) {
+          console.log(params.id);
+          console.log(obj.id);
+          console.log(obj.name);
+          console.log([obj.name]);
+          return { ...obj, ["name"]: names };
+        } else {
+          return obj;
         }
-    }));
+      })
+    );
     console.log(array);
+  }
+  const goBack = () => {
+    navigate(-1);
   };
 
   useEffect(() => {
@@ -87,6 +96,12 @@ const Edit = () => {
   return (
     <div className={styles.edit}>
       <div className={styles.flex_sb}>
+        <button
+          onClick={goBack}
+          className={`${styles.btn_edit} ${styles.btn_enabled}`}
+        >
+          Назад
+        </button>
         <p className={styles.name}>Профиль пользователя</p>
         <button
           onClick={onEdit}
@@ -99,7 +114,7 @@ const Edit = () => {
         </button>
       </div>
 
-      <form className={styles.form} onSubmit={(e)=>handleSubmit(e)}>
+      <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
         <div>
           <label className={styles.label_input} htmlFor="name">
             User
