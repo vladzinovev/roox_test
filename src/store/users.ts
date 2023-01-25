@@ -3,7 +3,6 @@ import axios from "axios";
 import { IPost } from "../types/types";
 
 interface UsersState {
-  sort: boolean;
   status: "empty" | "loading" | "error" | "success";
   error: {};
   post: IPost[];
@@ -28,14 +27,19 @@ export const getAllPosts = createAsyncThunk(
 const users = createSlice({
   name: "users",
   initialState: {
-    sort: true,
     status: "empty",
     error: {},
     post: [],
   } as UsersState,
   reducers: {
-    changeSort: (state, action) => {
-      state.sort = !state.sort;
+    editUser: (state, action) => {
+      state.post.map((obj) => {
+        if (obj.id == action.payload) {
+          return { ...obj, [action.payload]: action.payload };
+        } else {
+          return obj;
+        }
+      });
     },
   },
   extraReducers: (builder) => {
@@ -61,4 +65,4 @@ const users = createSlice({
 });
 
 export default users.reducer;
-export const { changeSort } = users.actions;
+export const { editUser } = users.actions;
