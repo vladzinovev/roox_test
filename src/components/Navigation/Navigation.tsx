@@ -7,10 +7,8 @@ const Navigation = () => {
     function handleClick(e:any) {
         console.log(e.target.innerHTML);
       if (e.target.innerHTML === "по городу") {
-        //props.changeSortType("city")
         dispatch(setSort("city"));
       } else if (e.target.innerHTML === "по компании") {
-        //props.changeSortType("name")
         dispatch(setSort("company"));
       }
     }

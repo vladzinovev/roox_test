@@ -32,15 +32,10 @@ const users = createSlice({
     post: [],
   } as UsersState,
   reducers: {
-    editUser: (state, action) => {
-      state.post.map((obj) => {
-        if (obj.id == action.payload) {
-          return { ...obj, [action.payload]: action.payload };
-        } else {
-          return obj;
-        }
-      });
+    getSortUsers:(state,{ payload })=>{
+        state.post = payload;
     },
+    
   },
   extraReducers: (builder) => {
     //pending-ожидание
@@ -65,4 +60,4 @@ const users = createSlice({
 });
 
 export default users.reducer;
-export const { editUser } = users.actions;
+export const { getSortUsers } = users.actions;
