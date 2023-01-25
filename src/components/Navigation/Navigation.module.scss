@@ -1,3 +1,4 @@
+@import "../../variables";
 .navigation{
     width:152px;
     height:1028px;
@@ -14,8 +15,13 @@
         margin-top: 10px;
         padding:5px 15px;
         border-style: none;
-        background: #4B51EF;
+        background: $main-base;
         border-radius: 5px;
         color: white;
+    }
+    
+    .btn_sort:hover {
+      cursor: pointer;
+      background: $main-hover;
     }
 }
