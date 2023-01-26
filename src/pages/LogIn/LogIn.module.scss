@@ -1,25 +1,16 @@
 @import "../../variables";
-.page404 {
+.login {
   margin-top: 100px;
   text-align: center;
 
-  .error {
-    font-size: 200px;
-    color: $main-base;
-    line-height: 0.75;
-  }
-  .not_found {
+
+  .bd {
     font-size: 30px;
-    color: $main-base;
-  }
-  .description {
-    text-align: center;
-    margin: 20px auto;
-    width: 450px;
-    font-size: 20px;
+    color: black;
   }
   
   .btn{
+    margin-top: 200px;
     width: 340px;
     height: 40px;
     padding: 6px 11px;

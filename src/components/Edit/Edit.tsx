@@ -1,13 +1,16 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useTypedSelector } from "../../hook/useTypedSelector";
+import { useAppDispatch, useTypedSelector } from "../../hook/useTypedSelector";
+import { getEditProfile } from "../../store/users";
 import { IPost } from "../../types/types";
 import styles from "./Edit.module.scss";
+
 const Edit = () => {
   const { post } = useTypedSelector((store) => store.users);
   let params = useParams();
   let navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const [edit, setEdit] = useState(false);
   const [postItem, setPostItem] = useState<IPost>();
   const [array, setArray] = useState<IPost[]>([
@@ -35,29 +38,28 @@ const Edit = () => {
       },
     },
     {
-        id: 1,
-        name: "vlad vlad",
-        username: "ssss",
-        email: "sss@rosamond.me",
-        address: {
-          street: "ss Summisst",
-          suite: "ss 729",
-          city: "sssAlissyaview",
-          zipcode: "45169",
-          geo: {
-            lat: "-14.3990",
-            lng: "-120.7677",
-          },
-        },
-        phone: "586.493.6943 x140",
-        website: "ssjsacynthe.com",
-        company: {
-          name: "sssAbernathy Group",
-          catchPhrase: "ssImplemented secondary concept",
-          bs: "e-enable extensible e-tailers",
+      id: 1,
+      name: "vlad vlad",
+      username: "ssss",
+      email: "sss@rosamond.me",
+      address: {
+        street: "ss Summisst",
+        suite: "ss 729",
+        city: "sssAlissyaview",
+        zipcode: "45169",
+        geo: {
+          lat: "-14.3990",
+          lng: "-120.7677",
         },
       },
-    
+      phone: "586.493.6943 x140",
+      website: "ssjsacynthe.com",
+      company: {
+        name: "sssAbernathy Group",
+        catchPhrase: "ssImplemented secondary concept",
+        bs: "e-enable extensible e-tailers",
+      },
+    },
   ]);
   function getUserId() {
     setPostItem(post.find((post) => post.id === Number(params.id)));
@@ -79,33 +81,23 @@ const Edit = () => {
   function handleSubmit(e: any) {
     e.preventDefault();
     onEdit();
+    console.log('вход')
     const tet = e.target.elements;
-    array.forEach(arr=>{
-        if(arr.id===Number(params.id)){
-            arr["name"]=tet.name.value;
-            arr["username"]=tet.user_name.value;
-            arr["email"]=tet.email.value;
-            arr["address"]["street"]=tet.street.value;
-            arr["address"]["city"]=tet.city.value;
-            arr["address"]["zipcode"]=tet.zip_code.value;
-            arr["phone"]=tet.phone.value;
-            arr["website"]=tet.website.value;
-            arr["comment"]=tet.comment.value;
-        }
-    })
-
-    const names = tet.name.value;
-    const userName = tet.user_name.value;
-    const email = tet.email.value;
-    const street = tet.street.value;
-    const city = tet.city.value;
-    const zipcode = tet.zip_code.value;
-    const phone = tet.phone.value;
-    const website = tet.website.value;
-    const comment = tet.comment.value;
-    console.log(
-      `${names} ${userName} ${email} ${street} ${city} ${zipcode} ${phone} ${website} ${comment} `
-    );
+    post.forEach((arr) => {
+      if (arr.id === Number(params.id)) {
+        console.log('массив')
+        dispatch(getEditProfile(arr["name"] = tet.name.value))
+        /* arr["name"] = tet.name.value;
+        arr["username"] = tet.user_name.value;
+        arr["email"] = tet.email.value;
+        arr["address"]["street"] = tet.street.value;
+        arr["address"]["city"] = tet.city.value;
+        arr["address"]["zipcode"] = tet.zip_code.value;
+        arr["phone"] = tet.phone.value;
+        arr["website"] = tet.website.value;
+        arr["comment"] = tet.comment.value; */
+      }
+    });
 
     /* setArray(
       array.map((obj) => {
@@ -120,10 +112,12 @@ const Edit = () => {
         }
       })
     ); */
-    console.log(array);
-    console.log(array.map(arr=>{
-        return arr.comment
-    }));
+    console.log(post);
+    console.log(
+      array.map((arr) => {
+        return arr.comment;
+      })
+    );
   }
   const goBack = () => {
     navigate(-1);

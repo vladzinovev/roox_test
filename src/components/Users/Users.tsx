@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { useAppDispatch, useTypedSelector } from "../../hook/useTypedSelector";
-import { setSort } from "../../store/sort";
-import { getAllPosts } from "../../store/users";
+import { useTypedSelector } from "../../hook/useTypedSelector";
+
 import { IPost } from "../../types/types";
 import User from "./User/User";
 import styles from "./Users.module.scss";
@@ -10,7 +9,7 @@ const Users = () => {
   const { post } = useTypedSelector((store) => store.users);
   const { sort } = useTypedSelector((store) => store.sort);
   const [sortedUsers, setSortedUsers] = useState<Array<IPost>>([]);
-  const dispatch = useAppDispatch();
+  
 
   const sortByType = (sortType: string, usersForSort: Array<IPost>): any => {
     if (sortType === "city") {
@@ -40,17 +39,14 @@ const Users = () => {
     return 0;
   };
 
-  useEffect(() => {
-    dispatch(getAllPosts());
-    
-  }, []);
+
 
   useEffect(() => {
     let usersForSort = [...post];
     usersForSort.sort(sortByType(sort, usersForSort));
     console.log(sort);
     setUsersCount(post.length);
-  }, [post,sort]);
+  }, [post, sort]);
 
   /* useEffect(() => {
     let usersForSort = [...post];

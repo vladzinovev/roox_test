@@ -32,7 +32,7 @@ const users = createSlice({
     post: [],
   } as UsersState,
   reducers: {
-    getSortUsers:(state,{ payload })=>{
+    getEditProfile:(state,{ payload })=>{
         state.post = payload;
     },
     
@@ -60,4 +60,4 @@ const users = createSlice({
 });
 
 export default users.reducer;
-export const { getSortUsers } = users.actions;
+export const { getEditProfile } = users.actions;
