@@ -14,11 +14,11 @@ const Users = () => {
 
   const sortByType = (sortType: string, usersForSort: Array<IPost>): any => {
     if (sortType === "city") {
-        setSortedUsers(usersForSort.sort(sortByCity));
+      setSortedUsers(usersForSort.sort(sortByCity));
     } else if (sortType === "company") {
-        setSortedUsers(usersForSort.sort(sortByCompanyName));
+      setSortedUsers(usersForSort.sort(sortByCompanyName));
     } else if (sortType === "alphabet") {
-        setSortedUsers(usersForSort.sort(sortByUserName));
+      setSortedUsers(usersForSort.sort(sortByUserName));
     }
   };
 
@@ -42,22 +42,22 @@ const Users = () => {
 
   useEffect(() => {
     dispatch(getAllPosts());
-    let usersForSort = [...post];
-    usersForSort.sort(sortByType(sort, usersForSort));
-    console.log(sort)
+    
   }, []);
 
   useEffect(() => {
-    setUsersCount(post.length);
-  }, [post]);
-
-  useEffect(() => {
     let usersForSort = [...post];
     usersForSort.sort(sortByType(sort, usersForSort));
-    console.log(sort)
-  }, [sort]);
+    console.log(sort);
+    setUsersCount(post.length);
+  }, [post,sort]);
 
-  
+  /* useEffect(() => {
+    let usersForSort = [...post];
+    usersForSort.sort(sortByType(sort, usersForSort));
+    console.log(sort);
+  }, [sort]); */
+
   return (
     <div className={styles.users}>
       <p className={styles.name}>Список пользователей</p>

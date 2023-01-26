@@ -26,6 +26,7 @@ export interface IPost {
   phone: string;
   website: string;
   company: Company;
+  comment?:string;
 }
 
 export interface AllItems {

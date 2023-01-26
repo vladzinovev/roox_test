@@ -55,8 +55,28 @@ const Edit = () => {
   function handleSubmit(e: any) {
     e.preventDefault();
     onEdit();
-    /* setPostItem(oldValues=>({...oldValues,[e.target.elements.name]:e.target.elements.name.value})); */
     const tet = e.target.elements;
+    array.forEach(arr=>{
+        if(arr.id===Number(params.id)){
+            arr["comment"]=tet.comment.value;
+        }
+    })
+    /* array.map((arr) => {
+      if (arr.id === Number(params.id)) {
+        console.log("вход");
+        array.push(tet.comment.value);
+        setArray((prev) => ({
+          ...prev,
+          [arr.name]: e.target.elements.name.value,
+        }));
+      } else {
+        console.log("выход");
+        return arr;
+      }
+    }); */
+
+    /* setPostItem(oldValues=>({...oldValues,[e.target.elements.name]:e.target.elements.name.value})); */
+
     const names: string = tet.name.value;
     const userName = tet.user_name.value;
     const email = tet.email.value;
@@ -70,7 +90,7 @@ const Edit = () => {
       `${names} ${userName} ${email} ${street} ${city} ${zipcode} ${phone} ${website} ${comment} `
     );
 
-    setArray(
+    /* setArray(
       array.map((obj) => {
         if (obj.id === Number(params.id)) {
           console.log(params.id);
@@ -82,7 +102,7 @@ const Edit = () => {
           return obj;
         }
       })
-    );
+    ); */
     console.log(array);
   }
   const goBack = () => {
