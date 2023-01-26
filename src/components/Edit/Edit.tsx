@@ -34,6 +34,30 @@ const Edit = () => {
         bs: "e-enable extensible e-tailers",
       },
     },
+    {
+        id: 1,
+        name: "vlad vlad",
+        username: "ssss",
+        email: "sss@rosamond.me",
+        address: {
+          street: "ss Summisst",
+          suite: "ss 729",
+          city: "sssAlissyaview",
+          zipcode: "45169",
+          geo: {
+            lat: "-14.3990",
+            lng: "-120.7677",
+          },
+        },
+        phone: "586.493.6943 x140",
+        website: "ssjsacynthe.com",
+        company: {
+          name: "sssAbernathy Group",
+          catchPhrase: "ssImplemented secondary concept",
+          bs: "e-enable extensible e-tailers",
+        },
+      },
+    
   ]);
   function getUserId() {
     setPostItem(post.find((post) => post.id === Number(params.id)));
@@ -58,26 +82,19 @@ const Edit = () => {
     const tet = e.target.elements;
     array.forEach(arr=>{
         if(arr.id===Number(params.id)){
+            arr["name"]=tet.name.value;
+            arr["username"]=tet.user_name.value;
+            arr["email"]=tet.email.value;
+            arr["address"]["street"]=tet.street.value;
+            arr["address"]["city"]=tet.city.value;
+            arr["address"]["zipcode"]=tet.zip_code.value;
+            arr["phone"]=tet.phone.value;
+            arr["website"]=tet.website.value;
             arr["comment"]=tet.comment.value;
         }
     })
-    /* array.map((arr) => {
-      if (arr.id === Number(params.id)) {
-        console.log("вход");
-        array.push(tet.comment.value);
-        setArray((prev) => ({
-          ...prev,
-          [arr.name]: e.target.elements.name.value,
-        }));
-      } else {
-        console.log("выход");
-        return arr;
-      }
-    }); */
 
-    /* setPostItem(oldValues=>({...oldValues,[e.target.elements.name]:e.target.elements.name.value})); */
-
-    const names: string = tet.name.value;
+    const names = tet.name.value;
     const userName = tet.user_name.value;
     const email = tet.email.value;
     const street = tet.street.value;
@@ -104,6 +121,9 @@ const Edit = () => {
       })
     ); */
     console.log(array);
+    console.log(array.map(arr=>{
+        return arr.comment
+    }));
   }
   const goBack = () => {
     navigate(-1);
