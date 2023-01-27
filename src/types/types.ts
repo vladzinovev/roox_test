@@ -26,9 +26,9 @@ export interface IPost {
   phone: string;
   website: string;
   company: Company;
-  comment?:string;
+  comment?: string;
 }
 
 export interface AllItems {
-    item: IPost;
-  }
+  item: IPost;
+}

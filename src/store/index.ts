@@ -5,7 +5,7 @@ import users from "./users";
 const store = configureStore({
   reducer: {
     users,
-    sort
+    sort,
   },
 });
 export default store;

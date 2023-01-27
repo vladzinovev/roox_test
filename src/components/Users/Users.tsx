@@ -9,7 +9,6 @@ const Users = () => {
   const { post } = useTypedSelector((store) => store.users);
   const { sort } = useTypedSelector((store) => store.sort);
   const [sortedUsers, setSortedUsers] = useState<Array<IPost>>([]);
-  
 
   const sortByType = (sortType: string, usersForSort: Array<IPost>): any => {
     if (sortType === "city") {
@@ -39,15 +38,11 @@ const Users = () => {
     return 0;
   };
 
-
-
   useEffect(() => {
     let usersForSort = [...post];
     usersForSort.sort(sortByType(sort, usersForSort));
     setUsersCount(post.length);
   }, [post, sort]);
-
-  
 
   return (
     <div className={styles.users}>

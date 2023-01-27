@@ -18,8 +18,8 @@
     width: 450px;
     font-size: 20px;
   }
-  
-  .btn{
+
+  .btn {
     width: 340px;
     height: 40px;
     padding: 6px 11px;
@@ -30,13 +30,12 @@
     font-size: 20px;
     line-height: 14px;
     background: $main-base;
-    
   }
   .btn:hover {
     cursor: pointer;
     background: $main-hover;
   }
-  .link{
+  .link {
     color: #ffffff;
   }
 }

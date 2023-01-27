@@ -3,13 +3,12 @@
   margin-top: 100px;
   text-align: center;
 
-
   .bd {
     font-size: 30px;
     color: black;
   }
-  
-  .btn{
+
+  .btn {
     margin-top: 200px;
     width: 340px;
     height: 40px;
@@ -21,13 +20,12 @@
     font-size: 20px;
     line-height: 14px;
     background: $main-base;
-    
   }
   .btn:hover {
     cursor: pointer;
     background: $main-hover;
   }
-  .link{
+  .link {
     color: #ffffff;
   }
 }

@@ -40,7 +40,7 @@ const users = createSlice({
     getEditProfile: (state, action) => {
       state.post.forEach((arr: IPost) => {
         if (arr.id === state.id) {
-          arr["name"]= action.payload.name;
+          arr["name"] = action.payload.name;
           arr["username"] = action.payload.username;
           arr["email"] = action.payload.email;
           arr["address"]["street"] = action.payload.street;
@@ -76,4 +76,4 @@ const users = createSlice({
 });
 
 export default users.reducer;
-export const { setId,getEditProfile } = users.actions;
+export const { setId, getEditProfile } = users.actions;
