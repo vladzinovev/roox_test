@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useTypedSelector } from "../../hook/useTypedSelector";
 import { getEditProfile, setId } from "../../store/users";
-import { IPost } from "../../types/types";
+import { IPost, PostUser } from "../../types/types";
 import styles from "./Edit.module.scss";
 const Edit = () => {
   const { post, id } = useTypedSelector((store) => store.users);
@@ -12,6 +12,22 @@ const Edit = () => {
   const dispatch = useAppDispatch();
   const [edit, setEdit] = useState(false);
   const [postItem, setPostItem] = useState<IPost>();
+
+  //для формирования JSON и вывода на консоль
+  const [array, setArray] = useState<PostUser>({
+    name: "",
+    username: "",
+    email: "",
+    address: {
+      street: "",
+      city: "",
+      zipcode: 0,
+    },
+    phone: "",
+    website: "",
+    comment: "",
+  });
+
   function getUserId() {
     setPostItem(post.find((post) => post.id === Number(params.id)));
     dispatch(setId(Number(params.id)));
@@ -24,12 +40,12 @@ const Edit = () => {
   function handleSubmit(e: any) {
     e.preventDefault();
     onEdit();
-    
+
     const tet = e.target.elements;
-    const name = tet.name.value;
+    const name: string = tet.name.value;
     const username = tet.user_name.value;
     const email = tet.email.value;
-    const street = tet.street.value;
+    const street: string = tet.street.value;
     const city = tet.city.value;
     const zipcode = tet.zip_code.value;
     const phone = tet.phone.value;
@@ -48,6 +64,20 @@ const Edit = () => {
         comment,
       })
     );
+    //для формирования JSON и вывода на консоль
+    setArray({
+      name: name,
+      username: username,
+      email: email,
+      address: {
+        street: street,
+        city: city,
+        zipcode: zipcode,
+      },
+      phone: phone,
+      website: website,
+      comment: comment,
+    });
   }
   const goBack = () => {
     navigate(-1);
@@ -56,6 +86,46 @@ const Edit = () => {
   useEffect(() => {
     getUserId();
   }, [params.id]);
+
+  useEffect(() => {
+    console.log(JSON.stringify(array));
+  }, [array]);
+
+  /* function get(){
+    let copy = Object.assign([], array);
+    console.log(postItem);
+    if(postItem!==undefined){
+        copy.push(postItem);
+        setArray(copy);
+    }
+    console.log(array)
+  } */
+  /* array.forEach((arr) => {
+      if (arr.id === Number(params.id)) {
+        arr["name"] = tet.name.value;
+        arr["username"] = tet.user_name.value;
+        arr["email"] = tet.email.value;
+        arr["address"]["street"] = tet.street.value;
+        arr["address"]["city"] = tet.city.value;
+        arr["address"]["zipcode"] = tet.zip_code.value;
+        arr["phone"] = tet.phone.value;
+        arr["website"] = tet.website.value;
+        arr["comment"] = tet.comment.value;
+      }
+    }); */
+  /* setArray(
+      array.map((obj) => {
+        if (obj.id === Number(params.id)) {
+          console.log(params.id);
+          console.log(obj.id);
+          console.log(obj.name);
+          console.log([obj.name]);
+          return { ...obj, ["name"]: names };
+        } else {
+          return obj;
+        }
+      })
+    ); */
 
   return (
     <div className={styles.edit}>

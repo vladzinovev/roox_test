@@ -32,3 +32,16 @@ export interface IPost {
 export interface AllItems {
   item: IPost;
 }
+export interface PostUser {
+  name: string;
+  username: string;
+  email: string;
+  address: {
+    street: string;
+    city: string;
+    zipcode: number;
+  };
+  phone: string;
+  website:string;
+  comment?: string;
+}
