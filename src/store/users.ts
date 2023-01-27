@@ -5,6 +5,7 @@ import { IPost } from "../types/types";
 interface UsersState {
   status: "empty" | "loading" | "error" | "success";
   error: {};
+  id: number;
   post: IPost[];
 }
 
@@ -28,14 +29,30 @@ const users = createSlice({
   name: "users",
   initialState: {
     status: "empty",
+    id: 0,
     error: {},
     post: [],
   } as UsersState,
   reducers: {
-    getEditProfile:(state,{ payload })=>{
-        state.post = payload;
+    setId: (state, action) => {
+      state.id = action.payload;
     },
-    
+    getEditProfile: (state, action) => {
+      state.post.forEach((arr: IPost) => {
+        if (arr.id === state.id) {
+          arr["name"]= action.payload.name;
+          arr["username"] = action.payload.username;
+          arr["email"] = action.payload.email;
+          arr["address"]["street"] = action.payload.street;
+          arr["address"]["city"] = action.payload.city;
+          arr["address"]["zipcode"] = action.payload.zipcode;
+          arr["phone"] = action.payload.phone;
+          arr["website"] = action.payload.website;
+          arr["comment"] = action.payload.comment;
+        }
+      });
+      console.log(state.post);
+    },
   },
   extraReducers: (builder) => {
     //pending-ожидание
@@ -60,4 +77,4 @@ const users = createSlice({
 });
 
 export default users.reducer;
-export const { getEditProfile } = users.actions;
+export const { setId,getEditProfile } = users.actions;
