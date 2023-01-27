@@ -44,15 +44,10 @@ const Users = () => {
   useEffect(() => {
     let usersForSort = [...post];
     usersForSort.sort(sortByType(sort, usersForSort));
-    console.log(sort);
     setUsersCount(post.length);
   }, [post, sort]);
 
-  /* useEffect(() => {
-    let usersForSort = [...post];
-    usersForSort.sort(sortByType(sort, usersForSort));
-    console.log(sort);
-  }, [sort]); */
+  
 
   return (
     <div className={styles.users}>

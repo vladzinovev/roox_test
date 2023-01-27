@@ -12,67 +12,10 @@ const Edit = () => {
   const dispatch = useAppDispatch();
   const [edit, setEdit] = useState(false);
   const [postItem, setPostItem] = useState<IPost>();
-  const [array, setArray] = useState<IPost[]>([
-    {
-      id: 8,
-      name: "Nicholas Runolfsdottir V",
-      username: "Maxime_Nienow",
-      email: "Sherwood@rosamond.me",
-      address: {
-        street: "Ellsworth Summit",
-        suite: "Suite 729",
-        city: "Aliyaview",
-        zipcode: "45169",
-        geo: {
-          lat: "-14.3990",
-          lng: "-120.7677",
-        },
-      },
-      phone: "586.493.6943 x140",
-      website: "jacynthe.com",
-      company: {
-        name: "Abernathy Group",
-        catchPhrase: "Implemented secondary concept",
-        bs: "e-enable extensible e-tailers",
-      },
-    },
-    {
-      id: 1,
-      name: "vlad vlad",
-      username: "ssss",
-      email: "sss@rosamond.me",
-      address: {
-        street: "ss Summisst",
-        suite: "ss 729",
-        city: "sssAlissyaview",
-        zipcode: "45169",
-        geo: {
-          lat: "-14.3990",
-          lng: "-120.7677",
-        },
-      },
-      phone: "586.493.6943 x140",
-      website: "ssjsacynthe.com",
-      company: {
-        name: "sssAbernathy Group",
-        catchPhrase: "ssImplemented secondary concept",
-        bs: "e-enable extensible e-tailers",
-      },
-    },
-  ]);
   function getUserId() {
     setPostItem(post.find((post) => post.id === Number(params.id)));
     dispatch(setId(Number(params.id)));
   }
-  /* function get(){
-    let copy = Object.assign([], array);
-    console.log(postItem);
-    if(postItem!==undefined){
-        copy.push(postItem);
-        setArray(copy);
-    }
-    console.log(array)
-  } */
 
   const onEdit = () => {
     setEdit(!edit);
@@ -123,6 +66,7 @@ const Edit = () => {
       </div>
 
       <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
+        <div className={styles.block}>
         <div>
           <label className={styles.label_input} htmlFor="name">
             User
@@ -239,15 +183,16 @@ const Edit = () => {
           <label className={styles.label_input} htmlFor="comment">
             Comment
           </label>
-          <input
+          <textarea
             className={styles.input_comment}
-            type="text"
             name="comment"
             id="comment"
             defaultValue={postItem?.comment}
             readOnly={!edit ? true : false}
           />
         </div>
+        </div>
+        
         <button
           className={`${styles.btn_submit} ${
             edit ? styles.btn_enabled : styles.btn_disabled

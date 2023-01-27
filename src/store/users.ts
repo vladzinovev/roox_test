@@ -51,7 +51,6 @@ const users = createSlice({
           arr["comment"] = action.payload.comment;
         }
       });
-      console.log(state.post);
     },
   },
   extraReducers: (builder) => {

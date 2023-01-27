@@ -8,7 +8,6 @@ const LogIn = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getAllPosts());
-    console.log("Post");
   }, []);
 
   return (
