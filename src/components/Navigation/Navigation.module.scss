@@ -1,27 +1,26 @@
 @import "../../variables";
-.navigation{
-    width:152px;
-    min-height:1028px;
-    background: #BDBDBD;
-    padding: 35px 0 0 21px;
-    .sort{
+.navigation {
+  width: 152px;
+  min-height: 1028px;
+  background: #bdbdbd;
+  padding: 35px 0 0 21px;
+  .sort {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+  }
+  .btn_sort {
+    margin-top: 10px;
+    padding: 5px 15px;
+    border-style: none;
+    background: $main-base;
+    border-radius: 5px;
+    color: white;
+  }
 
-        font-style: normal;
-        font-weight: 400;
-        font-size: 12px;
-        line-height: 14px; 
-    }
-    .btn_sort{
-        margin-top: 10px;
-        padding:5px 15px;
-        border-style: none;
-        background: $main-base;
-        border-radius: 5px;
-        color: white;
-    }
-    
-    .btn_sort:hover {
-      cursor: pointer;
-      background: $main-hover;
-    }
+  .btn_sort:hover {
+    cursor: pointer;
+    background: $main-hover;
+  }
 }

@@ -1,52 +1,103 @@
 import { useEffect, useState } from "react";
 
-export const useValidation = (value: string, validations: any) => {
-    const [isEmpty, setEmpty] = useState(false);
-    const [minLengthError, setMinLengthError] = useState(false);
-    const [maxLengthError, setMaxLengthError] = useState(false);
-    const [emailError, setEmailError] = useState(false);
-    const [inputValid, setInputValid] = useState(true);
+export const useValidation = (value: any, validations: any) => {
+  const [isEmpty, setEmpty] = useState(true);
+  const [minLengthError, setMinLengthError] = useState(false);
+  const [maxLengthError, setMaxLengthError] = useState(false);
   
-    useEffect(() => {
-      for (const validation in validations) {
-        switch (validation) {
-          case "minLength":
-            value.length < validations[validation]
-              ? setMinLengthError(true)
-              : setMinLengthError(false);
+  const [nameError, setNameError] = useState(false);
+  const [usernameError, setUsernameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [streetError, setStreetError] = useState(false);
+  const [cityError, setCityError] = useState(false);
+  const [zipcodeError, setZipcodeError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
+  const [websiteError, setWebsiteError] = useState(false);
+
+  const [inputValid, setInputValid] = useState(true);
+  
+
+  useEffect(() => {
+    for (const validation in validations) {
+      switch (validation) {
+        case "minLength":
+          value.length < validations[validation]
+            ? setMinLengthError(true)
+            : setMinLengthError(false);
+          break;
+        case "isEmpty":
+          value ? setEmpty(false) : setEmpty(true);
+          break;
+        case "maxLength":
+          value.length > validations[validation]
+            ? setMaxLengthError(true)
+            : setMaxLengthError(false);
+          break;
+        case "isName":
+            /^([a-zA-Z]{2,}.?\s?[a-zA-Z]{2,16}\s[a-zA-Z]{1,16})+$/.test(String(value))
+            ? setNameError(false)
+            : setNameError(true)
             break;
-          case "empty":
-            value ? setEmpty(false) : setEmpty(true);
+        case "isUsername":
+            /^([a-zA-Z_?.?a-zA-Z]{3,16})+$/.test(String(value))
+            ? setUsernameError(false)
+            : setUsernameError(true)
             break;
-          case "maxLength":
-            value.length > validations[validation]
-              ? setMaxLengthError(true)
-              : setMaxLengthError(false);
+        case "isEmail":
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(String(value).toLowerCase())
+            ? setEmailError(false)
+            : setEmailError(true);
+          break;
+        case "isStreet":
+            /^([a-zA-Z]{2,16}\s[a-zA-Z]{2,16})+$/.test(String(value))
+            ? setStreetError(false)
+            : setStreetError(true)
             break;
-          case "email":
-            const re =
-              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            re.test(String(value).toLowerCase())
-              ? setEmailError(false)
-              : setEmailError(true);
+        case "isCity":
+            /^([a-zA-Z]{2,}\s?[a-zA-Z]{2,16})+$/.test(String(value))
+            ? setCityError(false)
+            : setCityError(true)
             break;
-        }
+        case "isZipcode":
+                /^([0-9-?0-9]{2,16})+$/.test(value)
+                ? setZipcodeError(false)
+                : setZipcodeError(true)
+                break;
+        case "isPhone":
+                /^([0-9-.()x ]{2,})+$/.test(value)
+                ? setPhoneError(false)
+                : setPhoneError(true)
+            break;
+        case "isWebsite":
+            /^[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/.test(value)
+            ? setWebsiteError(false)
+            : setWebsiteError(true)
+        break;
       }
-    }, [value]);
-  
-    useEffect(() => {
-      if (isEmpty || maxLengthError || minLengthError || emailError) {
-        setInputValid(false);
-      } else {
-        setInputValid(true);
-      }
-    }, [isEmpty, maxLengthError, minLengthError, emailError]);
-  
-    return {
-      isEmpty,
-      minLengthError,
-      emailError,
-      maxLengthError,
-      inputValid,
-    };
+    }
+  }, [value]);
+
+  useEffect(() => {
+    if (isEmpty || maxLengthError || minLengthError || emailError) {
+      setInputValid(false);
+    } else {
+      setInputValid(true);
+    }
+  }, [isEmpty, maxLengthError, minLengthError, emailError]);
+
+  return {
+    isEmpty,
+    minLengthError,
+    emailError,
+    maxLengthError,
+    inputValid,
+    nameError,
+    usernameError,
+    streetError,
+    cityError,
+    zipcodeError,
+    phoneError,
+    websiteError
+
   };
+};

@@ -1,96 +1,29 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useInput } from "../../hook/useInput";
 import { useAppDispatch, useTypedSelector } from "../../hook/useTypedSelector";
 import { getEditProfile, setId } from "../../store/users";
 import { IPost, PostUser } from "../../types/types";
 import styles from "./Edit.module.scss";
 
-export const useValidation = (value: string, validations: any) => {
-  const [isEmpty, setEmpty] = useState(false);
-  const [minLengthError, setMinLengthError] = useState(false);
-  const [maxLengthError, setMaxLengthError] = useState(false);
-  const [emailError, setEmailError] = useState(false);
-  const [inputValid, setInputValid] = useState(true);
-
-  useEffect(() => {
-    for (const validation in validations) {
-      switch (validation) {
-        case "minLength":
-          value.length < validations[validation]
-            ? setMinLengthError(true)
-            : setMinLengthError(false);
-          break;
-        case "empty":
-          value ? setEmpty(false) : setEmpty(true);
-          break;
-        case "maxLength":
-          value.length > validations[validation]
-            ? setMaxLengthError(true)
-            : setMaxLengthError(false);
-          break;
-        case "email":
-          const re =
-            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-          re.test(String(value).toLowerCase())
-            ? setEmailError(false)
-            : setEmailError(true);
-          break;
-      }
-    }
-  }, [value]);
-
-  useEffect(() => {
-    if (isEmpty || maxLengthError || minLengthError || emailError) {
-      setInputValid(false);
-    } else {
-      setInputValid(true);
-    }
-  }, [isEmpty, maxLengthError, minLengthError, emailError]);
-
-  return {
-    isEmpty,
-    minLengthError,
-    emailError,
-    maxLengthError,
-    inputValid,
-  };
-};
-
-export const useInput = (initialValue: string, validations: any) => {
-  const [value, setValue] = useState(initialValue);
-  const [isDirty, setDirty] = useState(false);
-  const valid = useValidation(value, validations);
-
-  const onChange = (e: any) => {
-    setValue(e.target.value);
-  };
-  const onBlur = () => {
-    setDirty(true);
-  };
-  return {
-    value,
-    onChange,
-    onBlur,
-    isDirty,
-    ...valid,
-  };
-};
-
 const Edit = () => {
-  const email = useInput("", { isEmpty: false, minLength: 3, isEmail: true });
-  const password = useInput("", {
-    isEmpty: false,
-    minLength: 5,
-    maxLength: 10,
-  });
-
-  const { post, id } = useTypedSelector((store) => store.users);
+  const { post } = useTypedSelector((store) => store.users);
   let params = useParams();
   let navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [edit, setEdit] = useState(false);
   const [postItem, setPostItem] = useState<IPost>();
+
+  const name = useInput(`${postItem?.name}`, {isEmpty: true, minLength: 2,isEmail: true,});
+  const username = useInput(`${postItem?.username}`, {isEmpty: true,minLength: 3,isEmail: true,});
+  const email = useInput(`${postItem?.email}`, {isEmpty: true,minLength: 3,isEmail: true,});
+  const street = useInput(`${postItem?.address.street}`, {isEmpty: true,minLength: 3,isEmail: true,});
+  const city = useInput(`${postItem?.address.city}`, {isEmpty: true,minLength: 3,isEmail: true,});
+  const zipcode = useInput(`${postItem?.address.zipcode}`, {isEmpty: true,minLength: 3,isEmail: true,});
+  const phone = useInput(`${postItem?.phone}`, {isEmpty: true,minLength: 3,isEmail: true,});
+  const website = useInput(`${postItem?.website}`, {isEmpty: true,minLength: 3,isEmail: true,});
+  const comment = useInput(`${postItem?.comment}`,{});
 
   //для формирования JSON и вывода на консоль
   const [array, setArray] = useState<PostUser>({
@@ -122,7 +55,9 @@ const Edit = () => {
     const tet = e.target.elements;
     const name: string = tet.name.value;
     const username = tet.user_name.value;
-    const email = tet.email.value;
+    const emails = tet.email.value;
+    console.log(emails)
+    console.log(email.value)
     const street: string = tet.street.value;
     const city = tet.city.value;
     const zipcode = tet.zip_code.value;
@@ -146,7 +81,7 @@ const Edit = () => {
     setArray({
       name: name,
       username: username,
-      email: email,
+      email: emails,
       address: {
         street: street,
         city: city,
@@ -168,42 +103,6 @@ const Edit = () => {
   useEffect(() => {
     console.log(JSON.stringify(array));
   }, [array]);
-
-  /* function get(){
-    let copy = Object.assign([], array);
-    console.log(postItem);
-    if(postItem!==undefined){
-        copy.push(postItem);
-        setArray(copy);
-    }
-    console.log(array)
-  } */
-  /* array.forEach((arr) => {
-      if (arr.id === Number(params.id)) {
-        arr["name"] = tet.name.value;
-        arr["username"] = tet.user_name.value;
-        arr["email"] = tet.email.value;
-        arr["address"]["street"] = tet.street.value;
-        arr["address"]["city"] = tet.city.value;
-        arr["address"]["zipcode"] = tet.zip_code.value;
-        arr["phone"] = tet.phone.value;
-        arr["website"] = tet.website.value;
-        arr["comment"] = tet.comment.value;
-      }
-    }); */
-  /* setArray(
-      array.map((obj) => {
-        if (obj.id === Number(params.id)) {
-          console.log(params.id);
-          console.log(obj.id);
-          console.log(obj.name);
-          console.log([obj.name]);
-          return { ...obj, ["name"]: names };
-        } else {
-          return obj;
-        }
-      })
-    ); */
 
   return (
     <div className={styles.edit}>
@@ -260,14 +159,21 @@ const Edit = () => {
             <label className={styles.label_input} htmlFor="email">
               E-mail
             </label>
+            {email.isDirty && email.emailError && (
+              <div className={styles.error}>Некорректный email</div>
+            )}
             <input
-              className={styles.input}
-              type="email"
+              className={`${styles.input} ${
+                email.isEmpty ? styles.invalid : null
+              }`}
+              type="text"
               name="email"
               id="email"
               readOnly={!edit ? true : false}
               defaultValue={postItem?.email}
               required
+              onChange={(e) => email.onChange(e)}
+              onBlur={() => email.onBlur()}
             />
           </div>
           <div>
@@ -318,7 +224,7 @@ const Edit = () => {
             </label>
             <input
               className={styles.input}
-              type="phone"
+              type="text"
               name="phone"
               id="phone"
               readOnly={!edit ? true : false}
@@ -330,6 +236,7 @@ const Edit = () => {
             <label className={styles.label_input} htmlFor="website">
               Web site
             </label>
+
             <input
               className={styles.input}
               type="text"
@@ -358,13 +265,7 @@ const Edit = () => {
           className={`${styles.btn_submit} ${
             edit ? styles.btn_enabled : styles.btn_disabled
           }`}
-          disabled={
-            !edit
-              ? !email.inputValid || !password.inputValid
-                ? true
-                : false
-              : false
-          }
+          disabled={!edit ? true : !email.inputValid ? true : false}
           type="submit"
           value="Отправить"
         >
