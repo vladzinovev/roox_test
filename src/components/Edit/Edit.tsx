@@ -5,7 +5,86 @@ import { useAppDispatch, useTypedSelector } from "../../hook/useTypedSelector";
 import { getEditProfile, setId } from "../../store/users";
 import { IPost, PostUser } from "../../types/types";
 import styles from "./Edit.module.scss";
+
+export const useValidation = (value: string, validations: any) => {
+  const [isEmpty, setEmpty] = useState(false);
+  const [minLengthError, setMinLengthError] = useState(false);
+  const [maxLengthError, setMaxLengthError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [inputValid, setInputValid] = useState(true);
+
+  useEffect(() => {
+    for (const validation in validations) {
+      switch (validation) {
+        case "minLength":
+          value.length < validations[validation]
+            ? setMinLengthError(true)
+            : setMinLengthError(false);
+          break;
+        case "empty":
+          value ? setEmpty(false) : setEmpty(true);
+          break;
+        case "maxLength":
+          value.length > validations[validation]
+            ? setMaxLengthError(true)
+            : setMaxLengthError(false);
+          break;
+        case "email":
+          const re =
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          re.test(String(value).toLowerCase())
+            ? setEmailError(false)
+            : setEmailError(true);
+          break;
+      }
+    }
+  }, [value]);
+
+  useEffect(() => {
+    if (isEmpty || maxLengthError || minLengthError || emailError) {
+      setInputValid(false);
+    } else {
+      setInputValid(true);
+    }
+  }, [isEmpty, maxLengthError, minLengthError, emailError]);
+
+  return {
+    isEmpty,
+    minLengthError,
+    emailError,
+    maxLengthError,
+    inputValid,
+  };
+};
+
+export const useInput = (initialValue: string, validations: any) => {
+  const [value, setValue] = useState(initialValue);
+  const [isDirty, setDirty] = useState(false);
+  const valid = useValidation(value, validations);
+
+  const onChange = (e: any) => {
+    setValue(e.target.value);
+  };
+  const onBlur = () => {
+    setDirty(true);
+  };
+  return {
+    value,
+    onChange,
+    onBlur,
+    isDirty,
+    ...valid,
+  };
+};
+
 const Edit = () => {
+  const email = useInput("", { isEmpty: false, minLength: 3, isEmail: true });
+  const password = useInput("", {
+    isEmpty: false,
+    minLength: 5,
+    maxLength: 10,
+  });
+
   const { post, id } = useTypedSelector((store) => store.users);
   let params = useParams();
   let navigate = useNavigate();
@@ -25,7 +104,6 @@ const Edit = () => {
     },
     phone: "",
     website: "",
-    comment: "",
   });
 
   function getUserId() {
@@ -280,7 +358,13 @@ const Edit = () => {
           className={`${styles.btn_submit} ${
             edit ? styles.btn_enabled : styles.btn_disabled
           }`}
-          disabled={!edit ? true : false}
+          disabled={
+            !edit
+              ? !email.inputValid || !password.inputValid
+                ? true
+                : false
+              : false
+          }
           type="submit"
           value="Отправить"
         >
