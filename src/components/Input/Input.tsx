@@ -7,12 +7,12 @@ const Input = ({
   defaultValue,
   error,
   textError,
-  minLenError,
+  minLenError=false,
 }:any) => {
     console.log(defaultValue);
   return (
     <div className={styles.input}>
-      <label className={styles.label_input} htmlFor="idLabel">
+      <label className={styles.label_input} htmlFor={idLabel}>
         {label}
       </label>
       {minLenError ? title.isDirty && title.minLengthError && (
@@ -27,8 +27,8 @@ const Input = ({
         onChange={(e: any) => title.onChange(e)}
         onBlur={() => title.onBlur()}
         type="text"
-        name="idLabel"
-        id="idLabel"
+        name={idLabel}
+        id={idLabel}
         defaultValue={defaultValue}
         required
         readOnly={!edit ? true : false}
