@@ -42,6 +42,10 @@ export interface PostUser {
     zipcode: number;
   };
   phone: string;
-  website:string;
+  website: string;
   comment?: string;
+}
+
+export interface IErrorComment {
+  errorMessage: string;
 }

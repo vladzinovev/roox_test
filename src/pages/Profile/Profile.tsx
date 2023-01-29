@@ -1,5 +1,3 @@
-
-
 import Edit from "../../components/Edit/Edit";
 import Navigation from "../../components/Navigation/Navigation";
 
@@ -8,7 +6,7 @@ const Profile = () => {
   return (
     <div className={styles.profile}>
       <Navigation />
-      <Edit/>
+      <Edit />
     </div>
   );
 };

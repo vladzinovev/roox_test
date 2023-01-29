@@ -4,7 +4,7 @@ import { useInput } from "../../hook/useInput";
 import { useAppDispatch, useTypedSelector } from "../../hook/useTypedSelector";
 import { getEditProfile, setId } from "../../store/users";
 import { IPost, PostUser } from "../../types/types";
-import Input from "../Input/Input";
+import Input from "./Input/Input";
 import styles from "./Edit.module.scss";
 
 const Edit = () => {

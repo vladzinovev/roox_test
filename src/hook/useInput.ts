@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { IPost } from "../types/types";
-import { useAppDispatch, useTypedSelector } from "./useTypedSelector";
+import { useTypedSelector } from "./useTypedSelector";
 import { useValidation } from "./useValidation";
 
-export const useInput = (params:any,initialValue: any, validations: any) => {
-  
-    const { post } = useTypedSelector((store) => store.users);
-    const [postItem, setPostItem] = useState<IPost>();
-    const [value, setValue] = useState(initialValue);
+export const useInput = (params: any, initialValue: any, validations: any) => {
+  const { post } = useTypedSelector((store) => store.users);
+  const [postItem, setPostItem] = useState<IPost>();
+  const [value, setValue] = useState(initialValue);
   const [isDirty, setDirty] = useState(false);
   const valid = useValidation(value, validations);
 
@@ -22,12 +21,11 @@ export const useInput = (params:any,initialValue: any, validations: any) => {
   }
   useEffect(() => {
     getUserId();
-    
   }, [params]);
 
-  useEffect(()=>{
+  useEffect(() => {
     setValue(initialValue);
-  },[postItem])
+  }, [postItem]);
   return {
     onChange,
     onBlur,

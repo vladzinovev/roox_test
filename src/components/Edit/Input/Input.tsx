@@ -1,24 +1,24 @@
 import styles from "./Input.module.scss";
 const Input = ({
-    label,
-    idLabel,
+  label,
+  idLabel,
   title,
   edit,
   defaultValue,
   error,
   textError,
-  minLenError=false,
-}:any) => {
-    console.log(defaultValue);
+  minLenError = false,
+}: any) => {
   return (
     <div className={styles.input}>
       <label className={styles.label_input} htmlFor={idLabel}>
         {label}
       </label>
-      {minLenError ? title.isDirty && title.minLengthError && (
-        <div className={styles.error}>Мало букв</div>
-      ) : null}
-      
+      {minLenError
+        ? title.isDirty &&
+          title.minLengthError && <div className={styles.error}>Мало букв</div>
+        : null}
+
       {title.isDirty && error && (
         <div className={styles.error}>{textError}</div>
       )}
