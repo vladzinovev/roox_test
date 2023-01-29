@@ -1,12 +1,14 @@
+import { Skeleton, Stack } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useTypedSelector } from "../../hook/useTypedSelector";
 
 import { IPost } from "../../types/types";
+import Error from "../Error/Error";
 import User from "./User/User";
 import styles from "./Users.module.scss";
 const Users = () => {
   const [usersCount, setUsersCount] = useState<number>(0);
-  const { post } = useTypedSelector((store) => store.users);
+  const { post, status, error } = useTypedSelector((store) => store.users);
   const { sort } = useTypedSelector((store) => store.sort);
   const [sortedUsers, setSortedUsers] = useState<Array<IPost>>([]);
 
@@ -46,11 +48,35 @@ const Users = () => {
 
   return (
     <div className={styles.users}>
-      <p className={styles.name}>Список пользователей</p>
-      {sortedUsers.map((pos) => (
-        <User item={pos} />
-      ))}
-      <p className={styles.search}>Найдено {usersCount} пользователей</p>
+      {status == "error" ? (
+        <Error errorMessage={error} />
+      ) : status === "loading" ? (
+        <>
+          <Stack spacing={1}>
+            <Skeleton className={styles.load_name} variant="text" sx={{ fontSize: "1rem" }} />
+            <div className={styles.loading}><Skeleton variant="rounded" width={420} height={60} /></div>
+            <div className={styles.loading}><Skeleton variant="rounded" width={420} height={60} /></div>
+            <div className={styles.loading}><Skeleton variant="rounded" width={420} height={60} /></div>
+            <div className={styles.loading}><Skeleton variant="rounded" width={420} height={60} /></div>
+            <div className={styles.loading}><Skeleton variant="rounded" width={420} height={60} /></div>
+            <div className={styles.loading}><Skeleton variant="rounded" width={420} height={60} /></div>
+            <div className={styles.loading}><Skeleton variant="rounded" width={420} height={60} /></div>
+            <div className={styles.loading}><Skeleton variant="rounded" width={420} height={60} /></div>
+            <div className={styles.loading}><Skeleton variant="rounded" width={420} height={60} /></div>
+            <div className={styles.loading}><Skeleton variant="rounded" width={420} height={60} /></div>
+            <Skeleton className={styles.load_count} variant="text" sx={{ fontSize: "1rem" }} />
+            
+          </Stack>{" "}
+        </>
+      ) : (
+        <>
+          <p className={styles.name}>Список пользователей</p>
+          {sortedUsers.map((pos) => (
+            <User item={pos} />
+          ))}
+          <p className={styles.search}>Найдено {usersCount} пользователей</p>
+        </>
+      )}
     </div>
   );
 };

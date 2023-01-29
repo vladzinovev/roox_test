@@ -66,6 +66,7 @@ const users = createSlice({
       } else {
         state.error = action.error;
       }
+      console.log(state.error);
     });
     //fulfilled-отработало корректно
     builder.addCase(getAllPosts.fulfilled, (state, { payload }) => {

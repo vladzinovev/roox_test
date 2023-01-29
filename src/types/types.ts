@@ -47,5 +47,5 @@ export interface PostUser {
 }
 
 export interface IErrorComment {
-  errorMessage: string;
+  errorMessage: any;
 }
