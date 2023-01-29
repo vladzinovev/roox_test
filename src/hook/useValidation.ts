@@ -19,6 +19,7 @@ export const useValidation = (value: any, validations: any) => {
 
   useEffect(() => {
     for (const validation in validations) {
+        console.log(value)
       switch (validation) {
         case "minLength":
           value.length < validations[validation]
@@ -34,12 +35,12 @@ export const useValidation = (value: any, validations: any) => {
             : setMaxLengthError(false);
           break;
         case "isName":
-            /^([a-zA-Z]{2,}.?\s?[a-zA-Z]{2,16}\s[a-zA-Z]{1,16})+$/.test(String(value))
+            /^([a-zA-Z]{2,}.?\s?[a-zA-Z]{2,}\s[a-zA-Z]{1,})+$/.test(value)
             ? setNameError(false)
             : setNameError(true)
             break;
         case "isUsername":
-            /^([a-zA-Z_?.?a-zA-Z]{3,16})+$/.test(String(value))
+            /^([a-zA-Z_?.?a-zA-Z]{3,})+$/.test(String(value))
             ? setUsernameError(false)
             : setUsernameError(true)
             break;
@@ -49,17 +50,17 @@ export const useValidation = (value: any, validations: any) => {
             : setEmailError(true);
           break;
         case "isStreet":
-            /^([a-zA-Z]{2,16}\s[a-zA-Z]{2,16})+$/.test(String(value))
+            /^([a-zA-Z]{2,}\s[a-zA-Z]{2,})+$/.test(String(value))
             ? setStreetError(false)
             : setStreetError(true)
             break;
         case "isCity":
-            /^([a-zA-Z]{2,}\s?[a-zA-Z]{2,16})+$/.test(String(value))
+            /^([a-zA-Z]{2,}\s?[a-zA-Z]{2,})+$/.test(String(value))
             ? setCityError(false)
             : setCityError(true)
             break;
         case "isZipcode":
-                /^([0-9-?0-9]{2,16})+$/.test(value)
+                /^([0-9-?0-9]{2,})+$/.test(value)
                 ? setZipcodeError(false)
                 : setZipcodeError(true)
                 break;
@@ -78,14 +79,15 @@ export const useValidation = (value: any, validations: any) => {
   }, [value]);
 
   useEffect(() => {
-    if (isEmpty || maxLengthError || minLengthError || emailError) {
+    if (isEmpty || maxLengthError || minLengthError || emailError || nameError|| usernameError||streetError||cityError||zipcodeError||phoneError||websiteError) {
       setInputValid(false);
     } else {
       setInputValid(true);
     }
-  }, [isEmpty, maxLengthError, minLengthError, emailError]);
+  }, [isEmpty, maxLengthError, minLengthError, emailError,nameError,usernameError,streetError,cityError,zipcodeError,phoneError,websiteError]);
 
   return {
+    value,
     isEmpty,
     minLengthError,
     emailError,
