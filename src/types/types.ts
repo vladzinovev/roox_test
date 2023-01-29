@@ -49,3 +49,27 @@ export interface PostUser {
 export interface IErrorComment {
   errorMessage: any;
 }
+
+export interface IInput {
+  label: string;
+  idLabel: string;
+  title?: {
+    value: any;
+    isEmpty: boolean;
+    minLengthError: boolean;
+    emailError: boolean;
+    maxLengthError: boolean;
+    inputValid: boolean;
+    nameError: boolean;
+    usernameError: boolean;
+    streetError: boolean;
+    isDirty: boolean;
+    onChange?:any;
+    onBlur?:any;
+  };
+  edit: boolean;
+  defaultValue: string | undefined;
+  error: boolean;
+  textError: string;
+  minLenError?: boolean;
+}

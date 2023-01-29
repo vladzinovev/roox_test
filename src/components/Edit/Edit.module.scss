@@ -36,7 +36,14 @@
       background: $main-hover;
     }
   }
-
+  .loading {
+    margin-top: 10px;
+  }
+  .load_count {
+    width: 100px;
+    height: 36px;
+    margin-left: auto;
+  }
   .form {
     .block {
       box-sizing: border-box;

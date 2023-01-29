@@ -19,7 +19,7 @@ export const getAllPosts = createAsyncThunk(
         throw new Error("Server error!");
       }
       return res.data;
-    } catch (err: any) {
+    } catch (err:any) {
       return rejectWithValue(err.message);
     }
   }
@@ -66,7 +66,6 @@ const users = createSlice({
       } else {
         state.error = action.error;
       }
-      console.log(state.error);
     });
     //fulfilled-отработало корректно
     builder.addCase(getAllPosts.fulfilled, (state, { payload }) => {

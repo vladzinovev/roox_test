@@ -48,24 +48,26 @@ const Users = () => {
 
   return (
     <div className={styles.users}>
-      {status == "error" ? (
+      {status === "error" ? (
         <Error errorMessage={error} />
       ) : status === "loading" ? (
         <>
           <Stack spacing={1}>
-            <Skeleton className={styles.load_name} variant="text" sx={{ fontSize: "1rem" }} />
-            <div className={styles.loading}><Skeleton variant="rounded" width={420} height={60} /></div>
-            <div className={styles.loading}><Skeleton variant="rounded" width={420} height={60} /></div>
-            <div className={styles.loading}><Skeleton variant="rounded" width={420} height={60} /></div>
-            <div className={styles.loading}><Skeleton variant="rounded" width={420} height={60} /></div>
-            <div className={styles.loading}><Skeleton variant="rounded" width={420} height={60} /></div>
-            <div className={styles.loading}><Skeleton variant="rounded" width={420} height={60} /></div>
-            <div className={styles.loading}><Skeleton variant="rounded" width={420} height={60} /></div>
-            <div className={styles.loading}><Skeleton variant="rounded" width={420} height={60} /></div>
-            <div className={styles.loading}><Skeleton variant="rounded" width={420} height={60} /></div>
-            <div className={styles.loading}><Skeleton variant="rounded" width={420} height={60} /></div>
-            <Skeleton className={styles.load_count} variant="text" sx={{ fontSize: "1rem" }} />
-            
+            <Skeleton
+              className={styles.load_name}
+              variant="text"
+              sx={{ fontSize: "1rem" }}
+            />
+            {[...Array(10)].map(() => (
+              <div className={styles.loading}>
+                <Skeleton variant="rounded" width={420} height={72} />
+              </div>
+            ))}
+            <Skeleton
+              className={styles.load_count}
+              variant="text"
+              sx={{ fontSize: "1rem" }}
+            />
           </Stack>{" "}
         </>
       ) : (

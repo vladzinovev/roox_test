@@ -18,7 +18,6 @@ export const useValidation = (value: any, validations: any) => {
 
   useEffect(() => {
     for (const validation in validations) {
-      console.log(value);
       switch (validation) {
         case "minLength":
           value.length < validations[validation]

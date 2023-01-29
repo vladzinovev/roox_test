@@ -1,4 +1,3 @@
-
 import error from "../../image/error.gif";
 import { IErrorComment } from "../../types/types";
 import styles from "./Error.module.scss";
