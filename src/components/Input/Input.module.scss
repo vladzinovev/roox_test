@@ -1,0 +1,40 @@
+.input {
+  .label_input {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 9px;
+    line-height: 9px;
+    display: block;
+  }
+  .error {
+    color: red;
+    font-size: 10px;
+  }
+  .input {
+    box-sizing: border-box;
+    width: 211px;
+    height: 22px;
+    padding: 5px 10px;
+    margin: 3px 0 10px 0;
+
+    background: #ffffff;
+    border: 1px solid #d8d8d8;
+    border-radius: 5px;
+  }
+  .invalid {
+    border: 1px solid red;
+  }
+
+  .input_comment {
+    padding: 3px 10px;
+    box-sizing: border-box;
+    max-width: 412px;
+    min-width: 412px;
+    height: 55px;
+    margin: 3px 0 10px 0;
+
+    background: #ffffff;
+    border: 1px solid #d8d8d8;
+    border-radius: 5px;
+  }
+}

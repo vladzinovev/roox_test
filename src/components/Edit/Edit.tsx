@@ -5,6 +5,7 @@ import { useInput } from "../../hook/useInput";
 import { useAppDispatch, useTypedSelector } from "../../hook/useTypedSelector";
 import { getEditProfile, setId } from "../../store/users";
 import { IPost, PostUser } from "../../types/types";
+import Input from "../Input/Input";
 import styles from "./Edit.module.scss";
 
 const Edit = () => {
@@ -117,6 +118,7 @@ const Edit = () => {
 
       <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
         <div className={styles.block}>
+            
           <div>
             <label className={styles.label_input} htmlFor="name">
               Name
@@ -124,7 +126,7 @@ const Edit = () => {
             {name.isDirty && name.minLengthError && (
               <div className={styles.error}>Мало букв</div>
             )}
-            {name.isDirty && name.emailError && (
+            {name.isDirty && name.nameError && (
                 <div className={styles.error}>Некорректное имя или не указана фамилия</div>
             )}
             <input
@@ -141,6 +143,7 @@ const Edit = () => {
               readOnly={!edit ? true : false}
             />
           </div>
+          
           <div>
             <label className={styles.label_input} htmlFor="user_name">
               User name
@@ -148,7 +151,7 @@ const Edit = () => {
             {username.isDirty && username.minLengthError && (
               <div className={styles.error}>Мало букв</div>
             )}
-            {username.isDirty && username.emailError && (
+            {username.isDirty && username.usernameError && (
                 <div className={styles.error}>Некорректное имя</div>
             )}
             <input
@@ -165,6 +168,7 @@ const Edit = () => {
               required
             />
           </div>
+          
           <div>
             <label className={styles.label_input} htmlFor="email">
               E-mail
@@ -191,7 +195,7 @@ const Edit = () => {
             <label className={styles.label_input} htmlFor="street">
               Street
             </label>
-            {street.isDirty && street.emailError && (
+            {street.isDirty && street.streetError && (
                 <div className={styles.error}>Некорректный ввод названия улицы</div>
             )}
             <input
@@ -212,7 +216,7 @@ const Edit = () => {
             <label className={styles.label_input} htmlFor="city">
               City
             </label>
-            {city.isDirty && city.emailError && (
+            {city.isDirty && city.cityError && (
                 <div className={styles.error}>Некорректный ввод названия города</div>
             )}
             <input
@@ -233,7 +237,7 @@ const Edit = () => {
             <label className={styles.label_input} htmlFor="zip_code">
               Zip code
             </label>
-            {zipcode.isDirty && zipcode.emailError && (
+            {zipcode.isDirty && zipcode.zipcodeError && (
                 <div className={styles.error}>Некорректный zipcode</div>
             )}
             <input
@@ -254,7 +258,7 @@ const Edit = () => {
             <label className={styles.label_input} htmlFor="phone">
               Phone
             </label>
-            {phone.isDirty && phone.emailError && (
+            {phone.isDirty && phone.phoneError && (
                 <div className={styles.error}>Некорректный ввод номера телефона</div>
             )}
             <input
@@ -275,7 +279,7 @@ const Edit = () => {
             <label className={styles.label_input} htmlFor="website">
               Web site
             </label>
-            {website.isDirty && website.emailError && (
+            {website.isDirty && website.websiteError && (
                 <div className={styles.error}>Некорректный ввод website</div>
             )}
             <input

@@ -35,7 +35,7 @@ export const useValidation = (value: any, validations: any) => {
             : setMaxLengthError(false);
           break;
         case "isName":
-            /^([a-zA-Z]{2,}.?\s?[a-zA-Z]{2,}\s[a-zA-Z]{1,})+$/.test(value)
+            /^([a-zA-Z]{1,}.?\s?[a-zA-Z]{1,}\s[a-zA-Z]{1,})+$/.test(value)
             ? setNameError(false)
             : setNameError(true)
             break;
