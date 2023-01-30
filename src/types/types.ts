@@ -73,3 +73,4 @@ export interface IInput {
   textError: string;
   minLenError?: boolean;
 }
+

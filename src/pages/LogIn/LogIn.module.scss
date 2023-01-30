@@ -1,35 +1,76 @@
 @import "../../variables";
 .login {
-  margin-top: 100px;
+  margin: 100px auto;
+  width: 500px;
   text-align: center;
-
   .bd {
     margin: 0 auto;
     width: 300px;
     font-size: 30px;
     color: black;
   }
-
-  .btn {
-    margin-top: 200px;
+  .form {
     width: 340px;
-    height: 40px;
-    padding: 6px 11px;
-    border-style: none;
-    border-radius: 5px;
-    font-style: normal;
-    font-weight: 00;
-    font-size: 20px;
-    line-height: 14px;
-    background: $main-base;
+    margin: 50px auto;
+    .block {
+      box-sizing: border-box;
+      margin-top: 10px;
+      background: #ffffff;
+      border: 1px solid #f3f3f3;
+      border-radius: 8px;
+      padding: 20px 0 9px 12px;
+      position: relative;
+      .block_input{
+        display: flex;
+        .label_input{
+          width: 100px;
+          margin-top: 5px;
+        }
+        .input {
+          box-sizing: border-box;
+          width: 211px;
+          height: 22px;
+          padding: 5px 10px;
+          margin: 3px 0 10px 0;
+  
+          background: #ffffff;
+          border: 1px solid #d8d8d8;
+          border-radius: 5px;
+        }
+        .invalid {
+          border: 1px solid red;
+        }
+      }
+      
+    }
+    .btn {
+      margin-top: 20px;
+      width: 340px;
+      height: 40px;
+      padding: 6px 11px;
+      border-style: none;
+      border-radius: 5px;
+      font-style: normal;
+      font-weight: 00;
+      font-size: 20px;
+      line-height: 14px;
+      background: $main-disabled;
+      color:white;
+    }
+    .enter{
+      background: $main-base;
+    }
+    .btn:hover {
+      cursor: pointer;
+    }
+    .link {
+      color: #ffffff;
+    }
   }
-  .btn:hover {
-    cursor: pointer;
-    background: $main-hover;
-  }
-  .link {
-    color: #ffffff;
-  }
+
+  
+
+  
 }
 
 @media (max-width: 576px) {
