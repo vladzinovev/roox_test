@@ -8,7 +8,7 @@ Project: [roox_test](https://vladzinovev.github.io/roox_test/).
 
 ## Пользование БД
 
-Я реализовал вход в БД по email: test@mail.ru, password: 1234. Email и password сохраняются в localStorage.
+Я реализовал вход в БД по email: test@mail.ru, password: 1234. 
 
 ## Страница с пользователями
 

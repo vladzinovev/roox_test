@@ -11,15 +11,8 @@ const LogIn = () => {
   const dispatch = useAppDispatch();
   const [submit, setSubmit] = useState(false);
   const login = { email: "test@mail.ru", password: "1234" };
-  const valueLocalStorage = (name: string) => {
-    const storage = localStorage.getItem(name);
-    if (storage !== null) {
-      return JSON.parse(storage);
-    }
-    return "";
-  };
-  const email = useInput("", valueLocalStorage("email"), {isEmpty: true,isEmail: true,});
-  const password = useInput("", valueLocalStorage("password"), {isEmpty: true,});
+  const email = useInput("", "", {isEmpty: true,isEmail: true,});
+  const password = useInput("", "", {isEmpty: true,});
 
   useEffect(() => {
     dispatch(getAllPosts());
@@ -28,8 +21,6 @@ const LogIn = () => {
   useEffect(() => {
     setSubmit(false);
     if (login.email === email.value && login.password === password.value) {
-      window.localStorage.setItem("email", JSON.stringify(email.value));
-      window.localStorage.setItem("password", JSON.stringify(password.value));
       setSubmit(true);
     }
   }, [email.value, password.value]);
@@ -54,7 +45,6 @@ const LogIn = () => {
               type="text"
               name="email"
               id="email"
-              defaultValue={valueLocalStorage("email")}
               required
             />
           </div>
@@ -73,7 +63,6 @@ const LogIn = () => {
               type="text"
               name="password"
               id="password"
-              defaultValue={valueLocalStorage("password")}
               required
             />
           </div>
