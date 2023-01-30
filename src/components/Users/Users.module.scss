@@ -1,6 +1,33 @@
 .users {
   width: 513px;
   height: 1028px;
+
+  .search {
+    display: flex;
+    height: 30px;
+    width: 513px;
+    background: #bdbdbd;
+    margin-top: -19px;
+    margin-left: -34px;
+    .search_user {
+      margin-top: 7px;
+      margin-left: 34px;
+      font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    }
+    .input {
+      width: 315px;
+      box-sizing: border-box;
+      padding: 5px 10px;
+      margin: 6px 0 6px 12px;
+
+      background: #ffffff;
+      border: 1px solid #d8d8d8;
+      border-radius: 5px;
+    }
+  }
   padding: 19px 59px 25px 34px;
   .load_name {
     width: 160px;
@@ -13,6 +40,7 @@
     margin-left: auto;
   }
   .name {
+    margin-top: 20px;
     margin-bottom: 3px;
     width: 300px;
     font-style: normal;
@@ -20,7 +48,7 @@
     font-size: 14px;
     line-height: 16px;
   }
-  .search {
+  .count {
     margin: 10px 0 0 0;
     font-style: normal;
     text-align: right;

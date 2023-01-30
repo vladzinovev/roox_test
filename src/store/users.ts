@@ -20,7 +20,7 @@ export const getAllPosts = createAsyncThunk(
         throw new Error("Server error!");
       }
       return res.data;
-    } catch (err:any) {
+    } catch (err: any) {
       return rejectWithValue(err.message);
     }
   }

@@ -64,8 +64,8 @@ export interface IInput {
     usernameError: boolean;
     streetError: boolean;
     isDirty: boolean;
-    onChange?:any;
-    onBlur?:any;
+    onChange?: any;
+    onBlur?: any;
   };
   edit: boolean;
   defaultValue: string | undefined;
@@ -73,4 +73,3 @@ export interface IInput {
   textError: string;
   minLenError?: boolean;
 }
-

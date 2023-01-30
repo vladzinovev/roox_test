@@ -12,6 +12,7 @@ const Users = () => {
   const { post, status, error } = useTypedSelector((store) => store.users);
   const { sort } = useTypedSelector((store) => store.sort);
   const [sortedUsers, setSortedUsers] = useState<Array<IPost>>([]);
+  const [searchValue,setSearchValue]=useState<string>('');
 
   const sortByType = (sortType: string, usersForSort: Array<IPost>): any => {
     if (sortType === "city") {
@@ -40,15 +41,52 @@ const Users = () => {
     if (a.name < b.name) return -1;
     return 0;
   };
+  useEffect(() => {
+    let usersForSort = [...sortedUsers];
+    /* setSortedUsers(usersForSort.sort((a: IPost, b: IPost): number => {
+      if (a.address.city > b.address.city) return 1;
+      if (a.address.city < b.address.city) return -1;
+      return 0;
+    })); */
+    setSortedUsers(usersForSort.filter(item => {
+      console.log(searchValue)
+      if(searchValue===''){
+        return sortedUsers;
+      } else{
+        console.log('true')
+        console.log(sortedUsers)
+        return item.name.toLowerCase().includes(searchValue.toLowerCase())
+        
+      }
+      
+    }));
+  }, [searchValue]);
 
   useEffect(() => {
     let usersForSort = [...post];
     usersForSort.sort(sortByType(sort, usersForSort));
+    setSearchValue('')
     setUsersCount(post.length);
   }, [post, sort]);
 
+  useEffect(()=>{
+    setUsersCount(sortedUsers.length);
+  },[sortedUsers])
+
+  
+
   return (
     <div className={styles.users}>
+      <div className={styles.search}>
+        <p className={styles.search_user}>Поиск по имени</p>
+        <input
+          className={styles.input}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchValue(e.target.value)}
+          type="text"
+          name="search"
+          id="search"
+        />
+      </div>
       {status === "error" ? (
         <Error errorMessage={error} />
       ) : status === "loading" ? (
@@ -77,7 +115,7 @@ const Users = () => {
           {sortedUsers.map((pos) => (
             <User item={pos} />
           ))}
-          <p className={styles.search}>Найдено {usersCount} пользователей</p>
+          <p className={styles.count}>Найдено {usersCount} пользователей</p>
         </>
       )}
     </div>

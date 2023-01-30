@@ -26,7 +26,9 @@ const Input = ({
       )}
       <input
         className={`${styles.input} ${title?.isEmpty ? styles.invalid : null}`}
-        onChange={(e:React.ChangeEvent<HTMLInputElement>) => title?.onChange(e)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          title?.onChange(e)
+        }
         onBlur={() => title?.onBlur()}
         type="text"
         name={idLabel}
