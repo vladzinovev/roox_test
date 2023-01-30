@@ -1,46 +1,36 @@
-# Getting Started with Create React App
+# Roox test
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Project: [roox_test](https://vladzinovev.github.io/roox_test/).
 
-## Available Scripts
+**[Основная страница]** - первое, что видит пользователь. Это вход в БД.
 
-In the project directory, you can run:
+![LANDING](docs/1.PNG)
 
-### `npm start`
+## Пользование БД
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Сначала мы входим в нашу БД через кнопку (это было реализовано для того чтобы можно было изменять профиль любого пользователя и видеть изменения в системе), но также после изменения профиля есть вывод в консоль.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Страница с пользователями
 
-### `npm test`
+![LANDING](docs/2.PNG)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+На данной странице можно перейти в любой профиль пользователя для редактирования, а также отсротировать по городу и по названию компании, по умолчания я реализовал сортировку по ФИО.
 
-### `npm run build`
+## Страница редактирования
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![LANDING](docs/3.PNG)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+На странице редактирования мы можем изменить предоставленные нам поля, но только после нажатия кнопки "редактировать", кнопка отправить не доступна. Как только нажали редактировать, получаем доступ к изменению полей, на каждое поле добавлена валидация на пустоту, длину символов и корректность ввода (исходя из данных https://jsonplaceholder.typicode.com/users). Если какое то поле  не правильно заполнено, то кнопка "отправить" не будет срабатывать для отправки данных. После того как все правильно ввели, нажимаем "отправить", данные формируются в json и выводятся в консоль, помимо этого я реализовал сохранение измененного пользователя в массив. Для того чтобы можно было нажать на кнопку "назад" и посмотреть на наши изменения, так же можем потом снова вернуться к этому пользователю и изменения останутся прежними.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+[Запрос через axios](https://jsonplaceholder.typicode.com/users)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Стек технологий
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+React
+TypeScript
+Axios
+Scss
+Redux toolkit
+```
