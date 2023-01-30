@@ -12,7 +12,7 @@ const Users = () => {
   const { post, status, error } = useTypedSelector((store) => store.users);
   const { sort } = useTypedSelector((store) => store.sort);
   const [sortedUsers, setSortedUsers] = useState<Array<IPost>>([]);
-  const [searchValue,setSearchValue]=useState<string>('');
+  const [searchValue, setSearchValue] = useState<string>("");
 
   const sortByType = (sortType: string, usersForSort: Array<IPost>): any => {
     if (sortType === "city") {
@@ -42,38 +42,39 @@ const Users = () => {
     return 0;
   };
   useEffect(() => {
-    let usersForSort = [...sortedUsers];
+    let usersForSort = [...post];
     /* setSortedUsers(usersForSort.sort((a: IPost, b: IPost): number => {
       if (a.address.city > b.address.city) return 1;
       if (a.address.city < b.address.city) return -1;
       return 0;
     })); */
-    setSortedUsers(usersForSort.filter(item => {
-      console.log(searchValue)
-      if(searchValue===''){
-        return sortedUsers;
-      } else{
-        console.log('true')
-        console.log(sortedUsers)
-        return item.name.toLowerCase().includes(searchValue.toLowerCase())
-        
-      }
-      
-    }));
+    setSortedUsers(
+      usersForSort.filter((item) => {
+        console.log(searchValue);
+        if (searchValue === "") {
+          return sortedUsers;
+        } else {
+          console.log("true");
+          console.log(sortedUsers);
+          return item.name.toLowerCase().includes(searchValue.toLowerCase());
+        }
+      })
+    );
   }, [searchValue]);
 
   useEffect(() => {
-    let usersForSort = [...post];
-    usersForSort.sort(sortByType(sort, usersForSort));
-    setSearchValue('')
-    setUsersCount(post.length);
+    if (searchValue) {
+      let usersForSort = [...sortedUsers];
+      usersForSort.sort(sortByType(sort, usersForSort));
+    } else {
+      let usersForSort = [...post];
+      usersForSort.sort(sortByType(sort, usersForSort));
+    }
   }, [post, sort]);
 
-  useEffect(()=>{
+  useEffect(() => {
     setUsersCount(sortedUsers.length);
-  },[sortedUsers])
-
-  
+  }, [sortedUsers]);
 
   return (
     <div className={styles.users}>
@@ -81,7 +82,9 @@ const Users = () => {
         <p className={styles.search_user}>Поиск по имени</p>
         <input
           className={styles.input}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchValue(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setSearchValue(e.target.value)
+          }
           type="text"
           name="search"
           id="search"
