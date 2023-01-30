@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
+
 import { useAppDispatch } from "../../hook/useTypedSelector";
 import { getAllPosts } from "../../store/users";
+
 import styles from "./LogIn.module.scss";
 
 const LogIn = () => {

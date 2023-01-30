@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
+
 import { AllItems } from "../../../types/types";
 import styles from "./User.module.scss";
+
 const User = ({ item }: AllItems) => {
   return (
     <div className={styles.user}>

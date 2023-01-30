@@ -4,6 +4,8 @@
   text-align: center;
 
   .bd {
+    margin: 0 auto;
+    width: 300px;
     font-size: 30px;
     color: black;
   }
@@ -27,5 +29,20 @@
   }
   .link {
     color: #ffffff;
+  }
+}
+
+@media (max-width: 576px) {
+  .login {
+    width: 400px;
+  }
+}
+@media (max-width: 425px) {
+  .login {
+    width: 300px;
+    .btn {
+      margin-top: 200px;
+      width: 240px;
+    }
   }
 }

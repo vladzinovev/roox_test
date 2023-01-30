@@ -1,6 +1,7 @@
 import { useAppDispatch } from "../../hook/useTypedSelector";
 import { setSort } from "../../store/sort";
 import styles from "./Navigation.module.scss";
+
 const Navigation = () => {
   const dispatch = useAppDispatch();
 
@@ -11,7 +12,6 @@ const Navigation = () => {
       dispatch(setSort("company"));
     }
   }
-
   return (
     <div className={styles.navigation}>
       <p className={styles.sort}>Сортировка</p>

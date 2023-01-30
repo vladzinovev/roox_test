@@ -1,10 +1,10 @@
-import "./App.scss";
 import { Route, Routes } from "react-router-dom";
 
 import List from "./pages/List/List";
 import Portfolio from "./pages/Profile/Profile";
 import Page404 from "./pages/Page404/Page404";
 import LogIn from "./pages/LogIn/LogIn";
+import "./App.scss";
 
 function App() {
   return (

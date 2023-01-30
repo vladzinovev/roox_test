@@ -102,3 +102,48 @@
     }
   }
 }
+
+@media (max-width: 576px) {
+  .edit {
+    width: 400px;
+    padding: 13px 20px 25px 20px;
+    .form{
+      .block{
+        .input_comment {
+        
+          max-width: 340px;
+          min-width: 340px;
+          height: 55px;
+          margin: 3px 0 10px 0;
+  
+          background: #ffffff;
+          border: 1px solid #d8d8d8;
+          border-radius: 5px;
+        }
+      }
+      
+    }
+  }
+}
+@media (max-width: 425px) {
+  .edit {
+    width: 300px;
+    padding: 13px 10px 25px 10px;
+    .flex_sb{
+      .name{
+        margin-left:10px;
+      }
+    }
+    .form{
+      
+      .block{
+        .input_comment {
+        
+          max-width: 260px;
+          min-width: 260px;
+        }
+      }
+      
+    }
+  }
+}

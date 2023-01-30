@@ -1,11 +1,12 @@
 import { Skeleton, Stack } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useTypedSelector } from "../../hook/useTypedSelector";
 
+import { useTypedSelector } from "../../hook/useTypedSelector";
 import { IPost } from "../../types/types";
 import Error from "../Error/Error";
 import User from "./User/User";
 import styles from "./Users.module.scss";
+
 const Users = () => {
   const [usersCount, setUsersCount] = useState<number>(0);
   const { post, status, error } = useTypedSelector((store) => store.users);

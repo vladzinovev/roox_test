@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+
 import sort from "./sort";
 import users from "./users";
 

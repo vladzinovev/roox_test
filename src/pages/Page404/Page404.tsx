@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+
 import styles from "./Page404.module.scss";
 
 const Page404 = () => (

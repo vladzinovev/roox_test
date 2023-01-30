@@ -24,3 +24,37 @@
     background: $main-hover;
   }
 }
+@media (max-width: 700px) {
+  .navigation {
+    width: 500px;
+    min-height: 70px;
+    padding: 10px 0 0 5px;
+    
+    .sort{
+      text-align: center;
+    }
+    .btn_sort {
+      margin-top: 5px;
+      margin-left: 105px;
+    }
+  }
+}
+@media (max-width: 576px) {
+  .navigation {
+    width: 400px;
+    .btn_sort {
+      margin-top: 5px;
+      margin-left: 65px;
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .navigation {
+    width: 300px;
+    .btn_sort {
+      margin-top: 5px;
+      margin-left: 35px;
+    }
+  }
+}

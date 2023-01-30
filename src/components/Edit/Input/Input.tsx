@@ -1,6 +1,6 @@
-
 import { IInput } from "../../../types/types";
 import styles from "./Input.module.scss";
+
 const Input = ({
   label,
   idLabel,

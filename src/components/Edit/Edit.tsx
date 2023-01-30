@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { Skeleton, Stack } from "@mui/material";
+
 import { useInput } from "../../hook/useInput";
 import { useAppDispatch, useTypedSelector } from "../../hook/useTypedSelector";
 import { getEditProfile, setId } from "../../store/users";
 import { IPost, PostUser } from "../../types/types";
 import Input from "./Input/Input";
 import styles from "./Edit.module.scss";
-import { Skeleton, Stack } from "@mui/material";
 
 const Edit = () => {
   const { post } = useTypedSelector((store) => store.users);

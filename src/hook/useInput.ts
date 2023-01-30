@@ -1,10 +1,10 @@
 import {useEffect, useState } from "react";
-import { Params } from "react-router-dom";
+
 import { IPost } from "../types/types";
 import { useTypedSelector } from "./useTypedSelector";
 import { useValidation } from "./useValidation";
 
-export const useInput = (params: string | undefined, initialValue: string|number, validations: any) => {
+export const useInput = (params: string | undefined, initialValue: any, validations: {}) => {
   const { post } = useTypedSelector((store) => store.users);
   const [postItem, setPostItem] = useState<IPost>();
   const [value, setValue] = useState(initialValue);

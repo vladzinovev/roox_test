@@ -37,3 +37,20 @@
     color: #4b51ef;
   }
 }
+@media (max-width: 576px) {
+  .user {
+    width: 350px;
+    .link {
+      left: 277px;
+    }
+  }
+}
+@media (max-width: 425px) {
+  .user {
+    width: 250px;
+    .link {
+      top:30px;
+      left: 180px;
+    }
+  }
+}
