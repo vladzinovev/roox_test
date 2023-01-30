@@ -13,9 +13,9 @@
       margin-top: 7px;
       margin-left: 34px;
       font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 16px;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
     }
     .input {
       width: 315px;
@@ -40,7 +40,7 @@
     margin-left: auto;
   }
   .name {
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 3px;
     width: 300px;
     font-style: normal;
@@ -60,15 +60,30 @@
 @media (max-width: 700px) {
   .users {
     width: 500px;
+    .search {
+      width: 500px;
+    }
   }
 }
 @media (max-width: 576px) {
   .users {
     width: 400px;
+    .search {
+      width: 400px;
+      .input {
+        width: 245px;
+      }
+    }
   }
 }
 @media (max-width: 425px) {
   .users {
     width: 300px;
+    .search {
+      width: 300px;
+      .input {
+        width: 145px;
+      }
+    }
   }
 }

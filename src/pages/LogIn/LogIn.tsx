@@ -26,6 +26,7 @@ const LogIn = () => {
   }, []);
 
   useEffect(() => {
+    setSubmit(false);
     if (login.email === email.value && login.password === password.value) {
       window.localStorage.setItem("email", JSON.stringify(email.value));
       window.localStorage.setItem("password", JSON.stringify(password.value));

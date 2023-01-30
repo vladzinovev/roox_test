@@ -43,11 +43,6 @@ const Users = () => {
   };
   useEffect(() => {
     let usersForSort = [...post];
-    /* setSortedUsers(usersForSort.sort((a: IPost, b: IPost): number => {
-      if (a.address.city > b.address.city) return 1;
-      if (a.address.city < b.address.city) return -1;
-      return 0;
-    })); */
     setSortedUsers(
       usersForSort.filter((item) => {
         console.log(searchValue);
