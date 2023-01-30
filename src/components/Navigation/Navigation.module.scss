@@ -1,0 +1,60 @@
+@import "../../variables";
+.navigation {
+  width: 152px;
+  min-height: 1028px;
+  background: #bdbdbd;
+  padding: 35px 0 0 21px;
+  .sort {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+  }
+  .btn_sort {
+    margin-top: 10px;
+    padding: 5px 15px;
+    border-style: none;
+    background: $main-base;
+    border-radius: 5px;
+    color: white;
+  }
+
+  .btn_sort:hover {
+    cursor: pointer;
+    background: $main-hover;
+  }
+}
+@media (max-width: 700px) {
+  .navigation {
+    width: 500px;
+    min-height: 70px;
+    padding: 10px 0 0 5px;
+
+    .sort {
+      text-align: center;
+    }
+    .btn_sort {
+      margin-top: 5px;
+      margin-left: 105px;
+    }
+  }
+}
+@media (max-width: 576px) {
+  .navigation {
+    width: 400px;
+    .btn_sort {
+      margin-top: 5px;
+      margin-left: 65px;
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .navigation {
+    width: 300px;
+    .btn_sort {
+      margin-top: 5px;
+      margin-left: 35px;
+    }
+  }
+}
