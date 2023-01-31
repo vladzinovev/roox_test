@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 
 import { useInput } from "../../hook/useInput";
@@ -9,10 +10,12 @@ import styles from "./LogIn.module.scss";
 const LogIn = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const [cookies, setCookie] = useCookies(["auth"]);
   const [submit, setSubmit] = useState(false);
   const login = { email: "test@mail.ru", password: "1234" };
-  const email = useInput("", "", {isEmpty: true,isEmail: true,});
-  const password = useInput("", "", {isEmpty: true,});
+  const email = useInput("", "", { isEmpty: true, isEmail: true });
+  const password = useInput("", "", { isEmpty: true });
+  const date = new Date(Date.now() + 60000);
 
   useEffect(() => {
     dispatch(getAllPosts());
@@ -21,6 +24,7 @@ const LogIn = () => {
   useEffect(() => {
     setSubmit(false);
     if (login.email === email.value && login.password === password.value) {
+      setCookie("auth", "authorized", { expires: date, path: "/" });
       setSubmit(true);
     }
   }, [email.value, password.value]);
@@ -68,8 +72,8 @@ const LogIn = () => {
           </div>
         </div>
         <button
-          className={`${styles.btn} ${submit ? styles.enter : null}`}
-          disabled={submit ? false : true}
+          className={`${styles.btn} ${submit || cookies.auth ? styles.enter : null}`}
+          disabled={submit ? false : cookies.auth ? false : true}
           type="submit"
           value="Вход в систему"
           onClick={() => navigate("/users")}

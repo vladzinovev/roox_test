@@ -45,12 +45,9 @@ const Users = () => {
     let usersForSort = [...post];
     setSortedUsers(
       usersForSort.filter((item) => {
-        console.log(searchValue);
         if (searchValue === "") {
           return sortedUsers;
         } else {
-          console.log("true");
-          console.log(sortedUsers);
           return item.name.toLowerCase().includes(searchValue.toLowerCase());
         }
       })
