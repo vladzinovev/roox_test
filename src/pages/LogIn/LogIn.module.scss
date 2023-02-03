@@ -7,7 +7,7 @@
     margin: 0 auto;
     width: 300px;
     font-size: 30px;
-    color: black;
+    color: #000000;
   }
   .form {
     width: 340px;
@@ -15,7 +15,7 @@
     .block {
       box-sizing: border-box;
       margin-top: 10px;
-      background: #ffffff;
+      background: $main-white;
       border: 1px solid #f3f3f3;
       border-radius: 8px;
       padding: 20px 0 9px 12px;
@@ -33,15 +33,14 @@
           padding: 5px 10px;
           margin: 3px 0 10px 0;
   
-          background: #ffffff;
+          background: $main-white;
           border: 1px solid #d8d8d8;
           border-radius: 5px;
         }
         .invalid {
-          border: 1px solid red;
+          border: 1px solid $main-error;
         }
       }
-      
     }
     .btn {
       margin-top: 20px;
@@ -55,7 +54,7 @@
       font-size: 20px;
       line-height: 14px;
       background: $main-disabled;
-      color:white;
+      color:$main-white;
     }
     .enter{
       background: $main-base;
@@ -64,13 +63,9 @@
       cursor: pointer;
     }
     .link {
-      color: #ffffff;
+      color: $main-white;
     }
   }
-
-  
-
-  
 }
 
 @media (max-width: 576px) {
@@ -78,6 +73,7 @@
     width: 400px;
   }
 }
+
 @media (max-width: 425px) {
   .login {
     width: 300px;

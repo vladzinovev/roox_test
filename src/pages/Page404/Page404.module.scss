@@ -2,7 +2,6 @@
 .page404 {
   margin-top: 100px;
   text-align: center;
-
   .error {
     font-size: 200px;
     color: $main-base;
@@ -18,7 +17,6 @@
     width: 450px;
     font-size: 20px;
   }
-
   .btn {
     width: 340px;
     height: 40px;
@@ -36,6 +34,6 @@
     background: $main-hover;
   }
   .link {
-    color: #ffffff;
+    color: $main-white;
   }
 }

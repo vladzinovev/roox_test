@@ -25,7 +25,7 @@ const Input = ({
         <div className={styles.error}>{textError}</div>
       )}
       <input
-        className={`${styles.input} ${title?.isEmpty ? styles.invalid : null}`}
+        className={`${styles.input} ${title?.isEmpty ? styles.invalid : null} ${!edit?styles.grey:null}`}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           title?.onChange(e)
         }

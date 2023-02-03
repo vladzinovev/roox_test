@@ -1,3 +1,4 @@
+@import "../../../variables";
 .input {
   .label_input {
     font-style: normal;
@@ -7,7 +8,7 @@
     display: block;
   }
   .error {
-    color: red;
+    color: $main-error;
     font-size: 10px;
   }
   .input {
@@ -16,12 +17,14 @@
     height: 22px;
     padding: 5px 10px;
     margin: 3px 0 10px 0;
-
     background: #ffffff;
     border: 1px solid #d8d8d8;
     border-radius: 5px;
   }
   .invalid {
-    border: 1px solid red;
+    border: 1px solid $main-error;
+  }
+  .grey{
+    color: rgba(0, 0, 0, 0.3);
   }
 }

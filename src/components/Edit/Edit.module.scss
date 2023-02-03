@@ -8,7 +8,6 @@
     justify-content: space-between;
     .name {
       margin: 5px 0 3px 0;
-
       font-style: normal;
       font-weight: 700;
       font-size: 14px;
@@ -22,9 +21,8 @@
       font-weight: 400;
       font-size: 12px;
       line-height: 14px;
-      color: #ffffff;
+      color: $main-white;
     }
-
     .btn_enabled {
       background: $main-base;
     }
@@ -48,7 +46,7 @@
     .block {
       box-sizing: border-box;
       margin-top: 10px;
-      background: #ffffff;
+      background: $main-white;
       border: 1px solid #f3f3f3;
       border-radius: 8px;
       padding: 20px 0 9px 12px;
@@ -60,7 +58,6 @@
         line-height: 9px;
         display: block;
       }
-
       .input_comment {
         padding: 3px 10px;
         box-sizing: border-box;
@@ -68,13 +65,11 @@
         min-width: 412px;
         height: 55px;
         margin: 3px 0 10px 0;
-
-        background: #ffffff;
+        background: $main-white;
         border: 1px solid #d8d8d8;
         border-radius: 5px;
       }
     }
-
     .btn_submit {
       margin-top: 10px;
       width: 85px;
@@ -86,7 +81,6 @@
       font-weight: 00;
       font-size: 12px;
       line-height: 14px;
-
       float: right;
       color: #ffffff;
     }
@@ -114,8 +108,7 @@
           min-width: 340px;
           height: 55px;
           margin: 3px 0 10px 0;
-
-          background: #ffffff;
+          background: $main-white;
           border: 1px solid #d8d8d8;
           border-radius: 5px;
         }
@@ -123,16 +116,20 @@
     }
   }
 }
+
 @media (max-width: 425px) {
   .edit {
     width: 300px;
     padding: 13px 10px 25px 10px;
     .flex_sb {
+      position: relative;
       .name {
-        margin-left: 10px;
+        position: absolute;
+        top: 35px;
       }
     }
     .form {
+      margin-top: 40px;
       .block {
         .input_comment {
           max-width: 260px;

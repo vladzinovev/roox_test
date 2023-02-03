@@ -1,7 +1,6 @@
 .users {
   width: 513px;
   height: 1028px;
-
   .search {
     display: flex;
     height: 30px;
@@ -57,6 +56,7 @@
     line-height: 14px;
   }
 }
+
 @media (max-width: 700px) {
   .users {
     width: 500px;
@@ -65,6 +65,7 @@
     }
   }
 }
+
 @media (max-width: 576px) {
   .users {
     width: 400px;
@@ -76,6 +77,7 @@
     }
   }
 }
+
 @media (max-width: 425px) {
   .users {
     width: 300px;

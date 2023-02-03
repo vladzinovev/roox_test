@@ -32,15 +32,18 @@ export interface IPost {
 export interface AllItems {
   item: IPost;
 }
+
+export interface PostUserAddress {
+  street: string;
+  city: string;
+  zipcode: number;
+}
+
 export interface PostUser {
   name: string;
   username: string;
   email: string;
-  address: {
-    street: string;
-    city: string;
-    zipcode: number;
-  };
+  address: PostUserAddress;
   phone: string;
   website: string;
   comment?: string;
@@ -50,23 +53,25 @@ export interface IErrorComment {
   errorMessage: any;
 }
 
+export interface IInputTitle {
+  value: any;
+  isEmpty: boolean;
+  minLengthError: boolean;
+  emailError: boolean;
+  maxLengthError: boolean;
+  inputValid: boolean;
+  nameError: boolean;
+  usernameError: boolean;
+  streetError: boolean;
+  isDirty: boolean;
+  onChange?: any;
+  onBlur?: any;
+}
+
 export interface IInput {
   label: string;
   idLabel: string;
-  title?: {
-    value: any;
-    isEmpty: boolean;
-    minLengthError: boolean;
-    emailError: boolean;
-    maxLengthError: boolean;
-    inputValid: boolean;
-    nameError: boolean;
-    usernameError: boolean;
-    streetError: boolean;
-    isDirty: boolean;
-    onChange?: any;
-    onBlur?: any;
-  };
+  title?: IInputTitle;
   edit: boolean;
   defaultValue: string | undefined;
   error: boolean;

@@ -16,20 +16,19 @@
     border-style: none;
     background: $main-base;
     border-radius: 5px;
-    color: white;
+    color: $main-white;
   }
-
   .btn_sort:hover {
     cursor: pointer;
     background: $main-hover;
   }
 }
+
 @media (max-width: 700px) {
   .navigation {
     width: 500px;
     min-height: 70px;
     padding: 10px 0 0 5px;
-
     .sort {
       text-align: center;
     }
@@ -39,6 +38,7 @@
     }
   }
 }
+
 @media (max-width: 576px) {
   .navigation {
     width: 400px;
