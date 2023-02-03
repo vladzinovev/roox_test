@@ -1,14 +1,15 @@
 # Roox test
 
-Project: [roox_test](https://vladzinovev.github.io/roox_test/).
+**Demo project:** [roox_test](https://vladzinovev.github.io/roox_test/).
 
-**[Основная страница]** - первое, что видит пользователь. Это вход в БД. 
+## Краткое описание
+У нас есть 10 пользователей, которые получаем через axios запрос. Их мы можем сортировать, искать и редактировать. Так же реализована страница со входом для доступа к пользователям. 
+
+**[Основная страница]** - первое, что видит пользователь. Это вход в приложение. 
 
 ![LANDING](docs/1.PNG)
 
-## Пользование БД
-
-Я реализовал вход в БД по email: test@mail.ru, password: 1234. 
+Я реализовал вход по email: test@mail.ru, password: 1234. 
 
 ## Страница с пользователями
 
@@ -30,6 +31,7 @@ Project: [roox_test](https://vladzinovev.github.io/roox_test/).
 
 
 [Запрос через axios](https://jsonplaceholder.typicode.com/users)
+[Тестовое задание](https://roox.notion.site/frontend-32b79baef66c4ca4a27f6f76e01a7dd2)
 
 ## Стек технологий
 

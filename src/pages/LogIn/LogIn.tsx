@@ -17,6 +17,11 @@ const LogIn = () => {
   const password = useInput("", "", { isEmpty: true });
   const date = new Date(Date.now() + 60000);
 
+  function showUsers(){
+    setCookie("auth", "authorized", { expires: date, path: "/" });
+    navigate("/users")
+  }
+
   useEffect(() => {
     dispatch(getAllPosts());
   }, []);
@@ -24,7 +29,7 @@ const LogIn = () => {
   useEffect(() => {
     setSubmit(false);
     if (login.email === email.value && login.password === password.value) {
-      setCookie("auth", "authorized", { expires: date, path: "/" });
+      
       setSubmit(true);
     }
   }, [email.value, password.value]);
@@ -76,7 +81,7 @@ const LogIn = () => {
           disabled={submit ? false : cookies.auth ? false : true}
           type="submit"
           value="Вход в систему"
-          onClick={() => navigate("/users")}
+          onClick={showUsers}
         >
           Вход в систему
         </button>

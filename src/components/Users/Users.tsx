@@ -8,19 +8,35 @@ import User from "./User/User";
 import styles from "./Users.module.scss";
 
 const Users = () => {
-  const [usersCount, setUsersCount] = useState<number>(0);
   const { post, status, error } = useTypedSelector((store) => store.users);
   const { sort } = useTypedSelector((store) => store.sort);
+
+  const [usersCount, setUsersCount] = useState<number>(0);
+  const [arrowUp,setArrowUp]=useState<boolean>(false);
   const [sortedUsers, setSortedUsers] = useState<Array<IPost>>([]);
   const [searchValue, setSearchValue] = useState<string>("");
 
-  const sortByType = (sortType: string, usersForSort: Array<IPost>): any => {
+  /* const sortByType = (sortType: string, usersForSort: Array<IPost>): any => {
     if (sortType === "city") {
       setSortedUsers(usersForSort.sort(sortByCity));
     } else if (sortType === "company") {
       setSortedUsers(usersForSort.sort(sortByCompanyName));
     } else if (sortType === "alphabet") {
       setSortedUsers(usersForSort.sort(sortByUserName));
+    }
+  }; */
+
+  const sortByType = (sortType: string, usersForSort: Array<IPost>): any => {
+    switch(sortType){
+      case 'city':
+        setSortedUsers(usersForSort.sort(sortByCity));
+        break;
+      case 'company':
+        setSortedUsers(usersForSort.sort(sortByCompanyName));
+        break;
+      case 'alphabet':
+        setSortedUsers(usersForSort.sort(sortByUserName));
+        break;
     }
   };
 
