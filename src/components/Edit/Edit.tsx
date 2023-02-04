@@ -54,7 +54,6 @@ const Edit = () => {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     onEdit();
-    console.log(comment.value)
     dispatch(
       getEditProfile({
         name: name.value,
