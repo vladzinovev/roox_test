@@ -26,7 +26,7 @@ const Edit = () => {
   const zipcode = useInput(params.id, `${postItem?.address.zipcode}`, {isEmpty: true,isZipcode: true,});
   const phone = useInput(params.id, `${postItem?.phone}`, {isEmpty: true,minLength: 7,isPhone: true,});
   const website = useInput(params.id, `${postItem?.website}`, {isEmpty: true,isWebsite: true,});
-  const comment = useInput(params.id, `${postItem?.comment}`, {});
+  const comment = useInput(params.id, `${postItem?.comment}`, {isEmpty:true});
 
   //для формирования JSON и вывода на консоль
   const [array, setArray] = useState<PostUser>({
@@ -54,6 +54,7 @@ const Edit = () => {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     onEdit();
+    console.log(comment.value)
     dispatch(
       getEditProfile({
         name: name.value,
@@ -64,7 +65,7 @@ const Edit = () => {
         zipcode: zipcode.value,
         phone: phone.value,
         website: website.value,
-        comment: comment.value,
+        comment: comment.value==='undefined'?'':comment.value,
       })
     );
     //для формирования JSON и вывода на консоль
@@ -205,7 +206,7 @@ const Edit = () => {
               </label>
               <textarea
                 onChange={(e:React.ChangeEvent<HTMLTextAreaElement>) => comment.onChange(e)}
-                className={styles.input_comment}
+                className={`${styles.input_comment} ${!edit ? styles.grey : null}`}
                 name="comment"
                 id="comment"
                 defaultValue={postItem?.comment}

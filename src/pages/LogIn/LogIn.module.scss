@@ -20,9 +20,9 @@
       border-radius: 8px;
       padding: 20px 0 9px 12px;
       position: relative;
-      .block_input{
+      .block_input {
         display: flex;
-        .label_input{
+        .label_input {
           width: 100px;
           margin-top: 5px;
         }
@@ -32,7 +32,6 @@
           height: 22px;
           padding: 5px 10px;
           margin: 3px 0 10px 0;
-  
           background: $main-white;
           border: 1px solid #d8d8d8;
           border-radius: 5px;
@@ -54,9 +53,9 @@
       font-size: 20px;
       line-height: 14px;
       background: $main-disabled;
-      color:$main-white;
+      color: $main-white;
     }
-    .enter{
+    .enter {
       background: $main-base;
     }
     .btn:hover {

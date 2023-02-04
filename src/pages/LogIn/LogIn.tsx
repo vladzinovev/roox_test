@@ -17,9 +17,9 @@ const LogIn = () => {
   const password = useInput("", "", { isEmpty: true });
   const date = new Date(Date.now() + 60000);
 
-  function showUsers(){
+  function showUsers() {
     setCookie("auth", "authorized", { expires: date, path: "/" });
-    navigate("/users")
+    navigate("/users");
   }
 
   useEffect(() => {
@@ -29,7 +29,6 @@ const LogIn = () => {
   useEffect(() => {
     setSubmit(false);
     if (login.email === email.value && login.password === password.value) {
-      
       setSubmit(true);
     }
   }, [email.value, password.value]);
@@ -77,7 +76,9 @@ const LogIn = () => {
           </div>
         </div>
         <button
-          className={`${styles.btn} ${submit || cookies.auth ? styles.enter : null}`}
+          className={`${styles.btn} ${
+            submit || cookies.auth ? styles.enter : null
+          }`}
           disabled={submit ? false : cookies.auth ? false : true}
           type="submit"
           value="Вход в систему"

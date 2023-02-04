@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { Type } from "typescript";
 
-export const useValidation = (value: any, validations: any) => {
+export const useValidation = (value:any, validations: Array<Type>) => {
   const [isEmpty, setEmpty] = useState(true);
   const [minLengthError, setMinLengthError] = useState(false);
   const [maxLengthError, setMaxLengthError] = useState(false);

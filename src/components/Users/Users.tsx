@@ -1,16 +1,16 @@
 import { Skeleton, Stack } from "@mui/material";
 import { useEffect, useState } from "react";
-import { Observable } from "redux";
 
 import { useTypedSelector } from "../../hook/useTypedSelector";
-import { IPost, ISort } from "../../types/types";
+import { IPost} from "../../types/types";
 import Error from "../Error/Error";
 import User from "./User/User";
 import styles from "./Users.module.scss";
 
 const Users = () => {
   const { post, status, error } = useTypedSelector((store) => store.users);
-  const { sort, arrowCity,arrowCompany } = useTypedSelector((store) => store.sort);
+  const { sort, arrowCity, arrowCompany } = useTypedSelector((store) => store.sort);
+
   const [usersCount, setUsersCount] = useState<number>(0);
   const [sortedUsers, setSortedUsers] = useState<Array<IPost>>([]);
   const [searchValue, setSearchValue] = useState<string>("");
@@ -20,13 +20,9 @@ const Users = () => {
       case "city":
         setSortedUsers(
           usersForSort.sort((a: IPost, b: IPost): number =>
-          arrowCity
-              ? a.address.city > b.address.city
-                ? 1
-                : -1
-              : a.address.city < b.address.city
-                ? 1
-                : -1
+            arrowCity
+              ? a.address.city > b.address.city ? 1 : -1
+              : a.address.city < b.address.city ? 1 : -1
           )
         );
         break;
@@ -34,12 +30,8 @@ const Users = () => {
         setSortedUsers(
           usersForSort.sort((a: IPost, b: IPost) =>
             arrowCompany
-              ? a.company.name > b.company.name
-                ? 1
-                : -1
-              : a.company.name < b.company.name
-                ? 1
-                : -1
+              ? a.company.name > b.company.name ? 1 : -1
+              : a.company.name < b.company.name ? 1 : -1
           )
         );
         break;
@@ -72,7 +64,7 @@ const Users = () => {
       let usersForSort = [...post];
       usersForSort.sort(sortByType(sort, usersForSort));
     }
-  }, [post, sort, arrowCity,arrowCompany]);
+  }, [post, sort, arrowCity, arrowCompany]);
 
   useEffect(() => {
     setUsersCount(sortedUsers.length);

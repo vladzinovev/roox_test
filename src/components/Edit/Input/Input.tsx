@@ -20,12 +20,13 @@ const Input = ({
         ? title?.isDirty &&
           title.minLengthError && <div className={styles.error}>Мало букв</div>
         : null}
-
       {title?.isDirty && error && (
         <div className={styles.error}>{textError}</div>
       )}
       <input
-        className={`${styles.input} ${title?.isEmpty ? styles.invalid : null} ${!edit?styles.grey:null}`}
+        className={`${styles.input} ${title?.isEmpty ? styles.invalid : null}   
+          ${!edit ? styles.grey : null}`
+        }
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           title?.onChange(e)
         }

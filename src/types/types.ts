@@ -54,7 +54,7 @@ export interface IErrorComment {
 }
 
 export interface IInputTitle {
-  value: any;
+  value: string|number;
   isEmpty: boolean;
   minLengthError: boolean;
   emailError: boolean;

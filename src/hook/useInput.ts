@@ -4,8 +4,9 @@ import { IPost } from "../types/types";
 import { useTypedSelector } from "./useTypedSelector";
 import { useValidation } from "./useValidation";
 
-export const useInput = (params: string | undefined, initialValue: any, validations: {}) => {
+export const useInput = (params: string | undefined, initialValue: string|number, validations: any) => {
   const { post } = useTypedSelector((store) => store.users);
+  
   const [postItem, setPostItem] = useState<IPost>();
   const [value, setValue] = useState(initialValue);
   const [isDirty, setDirty] = useState(false);
@@ -20,6 +21,7 @@ export const useInput = (params: string | undefined, initialValue: any, validati
   function getUserId() {
     setPostItem(post.find((post) => post.id === Number(params)));
   }
+
   useEffect(() => {
     getUserId();
   }, [params]);
@@ -27,6 +29,7 @@ export const useInput = (params: string | undefined, initialValue: any, validati
   useEffect(() => {
     setValue(initialValue);
   }, [postItem]);
+
   return {
     onChange,
     onBlur,
