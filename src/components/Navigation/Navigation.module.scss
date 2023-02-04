@@ -12,11 +12,14 @@
   }
   .btn_sort {
     margin-top: 10px;
-    padding: 5px 15px;
+    padding: 5px 10px 5px 15px;
     border-style: none;
     background: $main-base;
     border-radius: 5px;
     color: $main-white;
+    >img{
+      width: 11px;
+    }
   }
   .btn_sort:hover {
     cursor: pointer;

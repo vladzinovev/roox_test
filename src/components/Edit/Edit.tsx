@@ -117,12 +117,10 @@ const Edit = () => {
         </button>
       </div>
       {loading ? (
-        <>
-          <Stack spacing={1}>
-            <Skeleton className={styles.loading} variant="rounded" width={436} height={464}/>
-            <Skeleton className={styles.load_count} variant="text" sx={{ fontSize: "1rem" }}/>
-          </Stack>{" "}
-        </>
+        <Stack spacing={1}>
+          <Skeleton className={styles.loading} variant="rounded" width={436} height={464}/>
+          <Skeleton className={styles.load_count} variant="text" sx={{ fontSize: "1rem" }}/>
+        </Stack>
       ) : (
         <form className={styles.form} onSubmit={(e:React.FormEvent<HTMLFormElement>) => handleSubmit(e)}>
           <div className={styles.block}>

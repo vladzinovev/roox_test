@@ -78,3 +78,9 @@ export interface IInput {
   textError: string;
   minLenError?: boolean;
 }
+
+
+export interface ISort{
+  sortType: string; 
+  usersForSort: Array<IPost>
+}
